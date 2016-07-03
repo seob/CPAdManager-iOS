@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C5C723769E1CD7B4BB7E4A5 /* Pods_CPAdManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 227AC5F8ED1709DB7E27B177 /* Pods_CPAdManager.framework */; };
 		3E11B118B015D67A19BB4856 /* CPAdmobInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B672BF4B8038360A1E25 /* CPAdmobInterstitialAd.swift */; };
 		3E11B3E0DB93CB5BFE854B92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E11BDED1C8B844E573AD61A /* Main.storyboard */; };
 		3E11B5F34E06B1B9F92305AD /* CPFacebookInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B860F64F2C84339D0E3C /* CPFacebookInterstitialAd.swift */; };
@@ -17,10 +18,10 @@
 		3E11BE6EDCF8C6AF4EAE4E32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B4DBFEA174EC7EAC2380 /* ViewController.swift */; };
 		3E11BE9206261B3B3DE3E01E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E11B25511FF550929D266A3 /* LaunchScreen.storyboard */; };
 		3E11BF0DFC66EC8AF45275CD /* CPAdManager.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3E11BD3DB0C73F2B430B631A /* CPAdManager.podspec */; };
-		BECD2B600B010E87E65EF927 /* Pods_CPAdManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE97BFD9A303E4EE3A8B2676 /* Pods_CPAdManager.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		227AC5F8ED1709DB7E27B177 /* Pods_CPAdManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CPAdManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E11B13B7F1EF5830F2FCD3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		3E11B22F5B14CE89044D7268 /* CPAdManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CPAdManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E11B4DBFEA174EC7EAC2380 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -34,7 +35,6 @@
 		3E11BE8A4997309AA42A34B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF7629449560091E8FCB102F /* Pods-CPAdManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPAdManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CPAdManager/Pods-CPAdManager.debug.xcconfig"; sourceTree = "<group>"; };
 		F2BFF5A78F169DF8BED67BA3 /* Pods-CPAdManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPAdManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-CPAdManager/Pods-CPAdManager.release.xcconfig"; sourceTree = "<group>"; };
-		FE97BFD9A303E4EE3A8B2676 /* Pods_CPAdManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CPAdManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BECD2B600B010E87E65EF927 /* Pods_CPAdManager.framework in Frameworks */,
+				1C5C723769E1CD7B4BB7E4A5 /* Pods_CPAdManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,7 +52,7 @@
 		289187A22F767981B363CF32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FE97BFD9A303E4EE3A8B2676 /* Pods_CPAdManager.framework */,
+				227AC5F8ED1709DB7E27B177 /* Pods_CPAdManager.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
