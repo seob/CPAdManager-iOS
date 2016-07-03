@@ -6,7 +6,7 @@
 import Foundation
 import GoogleMobileAds
 
-class CPAdmobInterstitialAd: NSObject, CPInterstitialAd, GADInterstitialDelegate {
+public class CPAdmobInterstitialAd: NSObject, CPInterstitialAd, GADInterstitialDelegate {
     var delegate: CPInterstitialAdDelegate?
     var interstitial: GADInterstitial?
     let unitId: String
@@ -16,7 +16,7 @@ class CPAdmobInterstitialAd: NSObject, CPInterstitialAd, GADInterstitialDelegate
         super.init()
     }
 
-    func requestAd() {
+    public func requestAd() {
         let request = GADRequest()
         request.testDevices = [ kGADSimulatorID ]
         self.interstitial = GADInterstitial(adUnitID: unitId)
@@ -24,33 +24,33 @@ class CPAdmobInterstitialAd: NSObject, CPInterstitialAd, GADInterstitialDelegate
         self.interstitial?.loadRequest(request)
     }
 
-    func ready() -> Bool {
+    public func ready() -> Bool {
         guard let interstitial = self.interstitial else {
             return false
         }
         return interstitial.isReady && !interstitial.hasBeenUsed
     }
 
-    func showAd(viewController: UIViewController) {
+    public func showAd(viewController: UIViewController) {
         if let used = self.interstitial?.hasBeenUsed where used == false {
             self.interstitial?.presentFromRootViewController(viewController)
         }
     }
 
-    func setDelegate(delegate: CPInterstitialAdDelegate) -> CPInterstitialAd {
+    public func setDelegate(delegate: CPInterstitialAdDelegate) -> CPInterstitialAd {
         self.delegate = delegate
         return self
     }
 
-    func interstitialDidReceiveAd(ad: GADInterstitial!) {
+    public func interstitialDidReceiveAd(ad: GADInterstitial!) {
         self.delegate?.loadedAd(self)
     }
 
-    func interstitial(ad: GADInterstitial!, didFailToReceiveAdWithError error: GADRequestError!) {
+    public func interstitial(ad: GADInterstitial!, didFailToReceiveAdWithError error: GADRequestError!) {
         self.delegate?.failedToLoadAd(self, error: error)
     }
 
-    func interstitialDidDismissScreen(ad: GADInterstitial!) {
+    public func interstitialDidDismissScreen(ad: GADInterstitial!) {
         self.delegate?.dismissAd(self)
     }
 

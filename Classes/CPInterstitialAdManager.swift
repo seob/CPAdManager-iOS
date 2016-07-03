@@ -5,26 +5,26 @@
 
 import UIKit
 
-protocol CPInterstitialAd {
+public protocol CPInterstitialAd {
     func requestAd()
     func ready() -> Bool
     func showAd(viewController: UIViewController)
     func setDelegate(delegate: CPInterstitialAdDelegate) -> CPInterstitialAd
 }
 
-protocol CPInterstitialAdDelegate {
+public protocol CPInterstitialAdDelegate {
     func loadedAd(interstitialAd: CPInterstitialAd)
     func failedToLoadAd(interstitialAd: CPInterstitialAd, error: NSError)
     func dismissAd(interstitialAd: CPInterstitialAd)
 }
 
-protocol CPInterstitialAdManagerDelegate {
+public protocol CPInterstitialAdManagerDelegate {
     func loadedInterstitialAd(adManager: CPInterstitialAdManager)
     func failedToLoadInterstitialAd(adManager: CPInterstitialAdManager)
     func dismissAd(adManager: CPInterstitialAdManager)
 }
 
-class CPInterstitialAdManager: CPInterstitialAdDelegate {
+public class CPInterstitialAdManager: CPInterstitialAdDelegate {
     private let ads: [CPInterstitialAd]
     private var indexOfAd = 0 {
         didSet {
@@ -38,21 +38,21 @@ class CPInterstitialAdManager: CPInterstitialAdDelegate {
     var reloadAdAfterDismissAd = false
     var failForDebug = false
 
-    init(_ ads: [CPInterstitialAd]) {
+    public init(_ ads: [CPInterstitialAd]) {
         self.ads = ads.flatMap { $0 }
         let _ = self.ads.flatMap { $0.setDelegate(self) }
 
         assert(ads.count > 0)
     }
 
-    func setShowAfterLoadedAd(show: Bool, viewController: UIViewController?) {
+    public func setShowAfterLoadedAd(show: Bool, viewController: UIViewController?) {
         assert((show && viewController != nil) || (!show && viewController == nil))
 
         self.showAfterLoadedAd = show
         self.viewControllerForShowAfterLoadedAd = viewController
     }
 
-    func requestAd(delegate: CPInterstitialAdManagerDelegate? = nil) {
+    public func requestAd(delegate: CPInterstitialAdManagerDelegate? = nil) {
         assert((self.showAfterLoadedAd && delegate == nil) || (!self.showAfterLoadedAd && delegate != nil))
 
         self.delegate = delegate
@@ -60,17 +60,17 @@ class CPInterstitialAdManager: CPInterstitialAdDelegate {
         ad.requestAd()
     }
 
-    func ready() -> Bool {
+    public func ready() -> Bool {
         let ad: CPInterstitialAd = self.ads[self.indexOfAd]
         return ad.ready()
     }
 
-    func show(viewController: UIViewController) {
+    public func show(viewController: UIViewController) {
         let ad: CPInterstitialAd = self.ads[self.indexOfAd]
         ad.showAd(viewController)
     }
 
-    func loadedAd(interstitialAd: CPInterstitialAd) {
+    public func loadedAd(interstitialAd: CPInterstitialAd) {
         if arc4random_uniform(2) == 0 {
             self.failedToLoadAd(interstitialAd, error: NSError(domain: "test", code: 0, userInfo: nil))
             return
@@ -83,14 +83,14 @@ class CPInterstitialAdManager: CPInterstitialAdDelegate {
         }
     }
 
-    func failedToLoadAd(interstitialAd: CPInterstitialAd, error: NSError) {
+    public func failedToLoadAd(interstitialAd: CPInterstitialAd, error: NSError) {
         self.delegate?.failedToLoadInterstitialAd(self)
 
         self.indexOfAd = (self.indexOfAd + 1) % self.ads.count
         self.requestAd(self.delegate)
     }
 
-    func dismissAd(interstitialAd: CPInterstitialAd) {
+    public func dismissAd(interstitialAd: CPInterstitialAd) {
         self.delegate?.dismissAd(self)
 
         if self.reloadAdAfterDismissAd {

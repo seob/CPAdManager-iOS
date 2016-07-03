@@ -6,7 +6,7 @@
 import Foundation
 import FBAudienceNetwork
 
-class CPFacebookInterstitialAd: NSObject, CPInterstitialAd, FBInterstitialAdDelegate {
+public class CPFacebookInterstitialAd: NSObject, CPInterstitialAd, FBInterstitialAdDelegate {
     var delegate: CPInterstitialAdDelegate?
     var interstitialAd: FBInterstitialAd?
     let placementId: String
@@ -18,36 +18,36 @@ class CPFacebookInterstitialAd: NSObject, CPInterstitialAd, FBInterstitialAdDele
         FBAdSettings.setLogLevel(.Warning)
     }
 
-    func requestAd() {
+    public func requestAd() {
         self.interstitialAd = FBInterstitialAd(placementID: self.placementId)
         self.interstitialAd?.delegate = self
         self.interstitialAd?.loadAd()
     }
 
-    func ready() -> Bool {
+    public func ready() -> Bool {
         return self.interstitialAd?.adValid ?? false
     }
 
-    func showAd(viewController: UIViewController) {
+    public func showAd(viewController: UIViewController) {
         if self.ready() {
             self.interstitialAd?.showAdFromRootViewController(viewController)
         }
     }
 
-    func setDelegate(delegate: CPInterstitialAdDelegate) -> CPInterstitialAd {
+    public func setDelegate(delegate: CPInterstitialAdDelegate) -> CPInterstitialAd {
         self.delegate = delegate
         return self
     }
 
-    func interstitialAdDidClose(interstitialAd: FBInterstitialAd) {
+    public func interstitialAdDidClose(interstitialAd: FBInterstitialAd) {
         self.delegate?.dismissAd(self)
     }
 
-    func interstitialAdDidLoad(interstitialAd: FBInterstitialAd) {
+    public func interstitialAdDidLoad(interstitialAd: FBInterstitialAd) {
         self.delegate?.loadedAd(self)
     }
 
-    func interstitialAd(interstitialAd: FBInterstitialAd, didFailWithError error: NSError) {
+    public func interstitialAd(interstitialAd: FBInterstitialAd, didFailWithError error: NSError) {
         self.delegate?.failedToLoadAd(self, error: error)
     }
 
