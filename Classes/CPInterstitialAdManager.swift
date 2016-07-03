@@ -28,7 +28,7 @@ public class CPInterstitialAdManager: CPInterstitialAdDelegate {
     private let ads: [CPInterstitialAd]
     private var indexOfAd = 0 {
         didSet {
-            print("index of ad : \(self.indexOfAd)")
+//            print("index of ad : \(self.indexOfAd)")
         }
     }
 
