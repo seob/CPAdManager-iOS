@@ -71,7 +71,7 @@ public class CPInterstitialAdManager: CPInterstitialAdDelegate {
     }
 
     public func loadedAd(interstitialAd: CPInterstitialAd) {
-        if arc4random_uniform(2) == 0 {
+        if self.failForDebug && arc4random_uniform(2) == 0 {
             self.failedToLoadAd(interstitialAd, error: NSError(domain: "test", code: 0, userInfo: nil))
             return
         }
