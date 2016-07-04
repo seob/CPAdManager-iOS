@@ -34,7 +34,9 @@ public class CPBannerAdManager: CPBannerAdDelegate {
     }
 
     func request() {
-        assert(self.containerView != nil)
+        guard self.containerView != nil else {
+            return
+        }
 
         if let rootViewController = self.rootViewController {
             let ad = self.ads[self.indexOfAd]
