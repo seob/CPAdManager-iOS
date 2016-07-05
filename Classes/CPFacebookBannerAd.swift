@@ -32,11 +32,11 @@ class CPFacebookBannerAd: NSObject, CPBannerAd, FBAdViewDelegate {
         return self.adView
     }
 
-    public func adViewDidLoad(adView: FBAdView) {
+    internal func adViewDidLoad(adView: FBAdView) {
         self.delegate?.loadedAd(self)
     }
 
-    public func adView(adView: FBAdView, didFailWithError error: NSError) {
+    internal func adView(adView: FBAdView, didFailWithError error: NSError) {
         self.delegate?.failedToLoadAd(self, error: error)
     }
 }
