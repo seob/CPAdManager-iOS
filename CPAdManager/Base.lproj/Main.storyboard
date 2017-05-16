@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,65 +18,46 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkS-V2-1xd">
-                                <rect key="frame" x="20" y="540" width="560" height="40"/>
-                                <color key="backgroundColor" red="0.47843137250000001" green="0.72941176470000002" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="20" y="607" width="335" height="40"/>
+                                <color key="backgroundColor" red="0.47843137250000001" green="0.72941176470000002" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5Nv-Ah-mdf"/>
                                 </constraints>
                                 <state key="normal" title="Request interstitial ad">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="disabled">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="requestAd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mGH-qV-fBe"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="96O-40-Vd4">
-                                <rect key="frame" x="20" y="492" width="560" height="40"/>
-                                <color key="backgroundColor" red="0.47843137250000001" green="0.72941176470000002" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="20" y="559" width="335" height="40"/>
+                                <color key="backgroundColor" red="0.47843137250000001" green="0.72941176470000002" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="6ST-Ky-XrA"/>
                                 </constraints>
                                 <state key="normal" title="Show interstitial ad">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="disabled">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="showInterstitialAd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9P1-Jj-cUR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHJ-AY-pkC">
-                                <rect key="frame" x="20" y="40" width="560" height="40"/>
-                                <color key="backgroundColor" red="0.1137254902" green="0.50196078430000002" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="rAK-Mg-uDC"/>
-                                </constraints>
-                                <state key="normal" title="Reload after dimiss ad">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="reloadAfterDismissAd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FBr-Es-nJ0"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="96O-40-Vd4" secondAttribute="trailing" constant="20" id="9Pr-u6-VEg"/>
-                            <constraint firstItem="qHJ-AY-pkC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="C0j-tF-5jg"/>
                             <constraint firstItem="vkS-V2-1xd" firstAttribute="top" secondItem="96O-40-Vd4" secondAttribute="bottom" constant="8" id="FCj-e2-ofz"/>
-                            <constraint firstAttribute="trailing" secondItem="qHJ-AY-pkC" secondAttribute="trailing" constant="20" id="Qhq-jW-cBJ"/>
-                            <constraint firstItem="qHJ-AY-pkC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="hB4-IE-T90"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vkS-V2-1xd" secondAttribute="bottom" constant="20" id="jif-LY-JP3"/>
                             <constraint firstAttribute="trailing" secondItem="vkS-V2-1xd" secondAttribute="trailing" constant="20" id="kF1-6Z-Dn7"/>
                             <constraint firstItem="96O-40-Vd4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="toS-z2-Ecv"/>

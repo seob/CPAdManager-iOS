@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		1C5C723769E1CD7B4BB7E4A5 /* Pods_CPAdManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 227AC5F8ED1709DB7E27B177 /* Pods_CPAdManager.framework */; };
 		3E11B118B015D67A19BB4856 /* CPAdmobInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B672BF4B8038360A1E25 /* CPAdmobInterstitialAd.swift */; };
+		3E11B1D5B8453A4A2985830B /* CPUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B3FFC506C0E41336F70B /* CPUtil.swift */; };
 		3E11B3E0DB93CB5BFE854B92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E11BDED1C8B844E573AD61A /* Main.storyboard */; };
 		3E11B5F34E06B1B9F92305AD /* CPFacebookInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B860F64F2C84339D0E3C /* CPFacebookInterstitialAd.swift */; };
-		3E11B80B38643FCAA64B0C25 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E11B13B7F1EF5830F2FCD3E /* Info.plist */; };
 		3E11B8D5B87A44C0F4A4B46C /* CPInterstitialAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BBFFB61BCAC1212AC2F5 /* CPInterstitialAdManager.swift */; };
 		3E11B9FFF65694D915D70357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E11BE4A0FBCF120B74BC926 /* Assets.xcassets */; };
 		3E11BC6597F734504B626B33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BD10EF9C0B24F3673803 /* AppDelegate.swift */; };
@@ -24,6 +24,7 @@
 		227AC5F8ED1709DB7E27B177 /* Pods_CPAdManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CPAdManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E11B13B7F1EF5830F2FCD3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		3E11B22F5B14CE89044D7268 /* CPAdManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CPAdManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E11B3FFC506C0E41336F70B /* CPUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPUtil.swift; sourceTree = "<group>"; };
 		3E11B4DBFEA174EC7EAC2380 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3E11B672BF4B8038360A1E25 /* CPAdmobInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPAdmobInterstitialAd.swift; sourceTree = "<group>"; };
 		3E11B860F64F2C84339D0E3C /* CPFacebookInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPFacebookInterstitialAd.swift; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 				3E11BBFFB61BCAC1212AC2F5 /* CPInterstitialAdManager.swift */,
 				3E11B672BF4B8038360A1E25 /* CPAdmobInterstitialAd.swift */,
 				3E11B860F64F2C84339D0E3C /* CPFacebookInterstitialAd.swift */,
+				3E11B3FFC506C0E41336F70B /* CPUtil.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -139,7 +141,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Chope;
+				TargetAttributes = {
+					3E11B54805FBB657AF9F179F = {
+						DevelopmentTeam = JKB83V3G9Q;
+						LastSwiftMigration = 0830;
+					};
+				};
 			};
 			buildConfigurationList = 3E11B88F92AFB3E3F97599D1 /* Build configuration list for PBXProject "CPAdManager" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -163,7 +172,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E11B80B38643FCAA64B0C25 /* Info.plist in Resources */,
 				3E11B9FFF65694D915D70357 /* Assets.xcassets in Resources */,
 				3E11BE9206261B3B3DE3E01E /* LaunchScreen.storyboard in Resources */,
 				3E11B3E0DB93CB5BFE854B92 /* Main.storyboard in Resources */,
@@ -216,7 +224,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -231,6 +239,7 @@
 				3E11B8D5B87A44C0F4A4B46C /* CPInterstitialAdManager.swift in Sources */,
 				3E11B118B015D67A19BB4856 /* CPAdmobInterstitialAd.swift in Sources */,
 				3E11B5F34E06B1B9F92305AD /* CPFacebookInterstitialAd.swift in Sources */,
+				3E11B1D5B8453A4A2985830B /* CPUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,10 +270,12 @@
 			baseConfigurationReference = F2BFF5A78F169DF8BED67BA3 /* Pods-CPAdManager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JKB83V3G9Q;
 				INFOPLIST_FILE = CPAdManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.chopestory.CPAdManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -282,8 +293,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -318,10 +331,12 @@
 			baseConfigurationReference = BF7629449560091E8FCB102F /* Pods-CPAdManager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JKB83V3G9Q;
 				INFOPLIST_FILE = CPAdManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.chopestory.CPAdManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -339,8 +354,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -359,6 +376,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

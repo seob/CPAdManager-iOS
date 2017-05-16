@@ -14,56 +14,54 @@ class ViewController: UIViewController, CPInterstitialAdManagerDelegate {
     @IBOutlet weak var requestInterstitialButton: UIButton?
     @IBOutlet weak var showInterstitialButton: UIButton?
 
-    let interstitialAdManager = CPInterstitialAdManager([
-            CPFacebookInterstitialAd("1351290504887194_1351290761553835"),
-            CPAdmobInterstitialAd("ca-app-pub-3940256099942544/4411468910")
-    ])
-//    let interstitialAdManager = CPInterstitialAdManager([
-//            CPAdmobInterstitialAd("ca-app-pub-3940256099942544/4411468910"),
-//            CPFacebookInterstitialAd("1351290504887194_1351290761553835")
-//    ])
+    let admob: CPInterstitialAd = CPAdmobInterstitialAd(unitId: "ca-app-pub-3940256099942544/4411468910")
+    let facebook: CPInterstitialAd = CPFacebookInterstitialAd(placementId: "1351290504887194_1351290761553835")
+
+    let interstitialAdManager: CPInterstitialAdManager
+
+    public required init?(coder aDecoder: NSCoder) {
+        interstitialAdManager = CPInterstitialAdManager(interstitialAds: [
+                admob,
+                facebook,
+        ], firstAd: CPUtil.isInstalledFacebook() ? facebook : admob)
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
 
-        self.interstitialAdManager.failForDebug = true
-        self.interstitialAdManager.setShowAfterLoadedAd(true, viewController: self)
-        self.interstitialAdManager.requestAd()
+        interstitialAdManager.delegate = self
+        interstitialAdManager.failForDebug = true
+        interstitialAdManager.requestAd()
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
 
-    @IBAction func requestAd(button: UIButton?) {
-        button?.enabled = false
-        self.showInterstitialButton?.enabled = false
-
-        self.interstitialAdManager.setShowAfterLoadedAd(false, viewController: nil)
-        self.interstitialAdManager.requestAd(self)
+    @IBAction func requestAd(_ button: UIButton?) {
+        button?.isEnabled = false
+        showInterstitialButton?.isEnabled = false
+        interstitialAdManager.requestAd()
     }
 
-    @IBAction func showInterstitialAd(button: UIButton?) {
-        self.interstitialAdManager.show(self)
-        button?.enabled = false
+    @IBAction func showInterstitialAd(_ button: UIButton?) {
+        interstitialAdManager.show(from: self)
+        button?.isEnabled = false
     }
 
-    @IBAction func reloadAfterDismissAd(button: UIButton?) {
-        self.interstitialAdManager.reloadAdAfterDismissAd = true
+    func onLoaded(interstitialAdManager: CPInterstitialAdManager) {
+        showInterstitialButton?.isEnabled = true
+        requestInterstitialButton?.isEnabled = true
     }
 
-    func loadedInterstitialAd(adManager: CPInterstitialAdManager) {
-        self.showInterstitialButton?.enabled = true
-        self.requestInterstitialButton?.enabled = true
+    func onFailedToLoad(interstitialAdManager: CPInterstitialAdManager) {
+        showInterstitialButton?.isEnabled = false
+        requestInterstitialButton?.isEnabled = true
     }
 
-    func failedToLoadInterstitialAd(adManager: CPInterstitialAdManager) {
-        self.showInterstitialButton?.enabled = false
-        self.requestInterstitialButton?.enabled = true
-    }
-
-    func dismissAd(adManager: CPInterstitialAdManager) {
+    func onDismissed(interstitialAd: CPInterstitialAdManager) {
     }
 
 }
