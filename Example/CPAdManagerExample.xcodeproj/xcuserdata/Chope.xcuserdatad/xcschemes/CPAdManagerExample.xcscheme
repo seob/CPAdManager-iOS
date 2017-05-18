@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3E11B54805FBB657AF9F179F"
-               BuildableName = "CPAdManager.app"
-               BlueprintName = "CPAdManager"
-               ReferencedContainer = "container:CPAdManager.xcodeproj">
+               BlueprintIdentifier = "1DCA28BF1ECDFA010012E162"
+               BuildableName = "CPAdManagerExample.app"
+               BlueprintName = "CPAdManagerExample"
+               ReferencedContainer = "container:CPAdManagerExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,6 +29,15 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1DCA28BF1ECDFA010012E162"
+            BuildableName = "CPAdManagerExample.app"
+            BlueprintName = "CPAdManagerExample"
+            ReferencedContainer = "container:CPAdManagerExample.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -46,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3E11B54805FBB657AF9F179F"
-            BuildableName = "CPAdManager.app"
-            BlueprintName = "CPAdManager"
-            ReferencedContainer = "container:CPAdManager.xcodeproj">
+            BlueprintIdentifier = "1DCA28BF1ECDFA010012E162"
+            BuildableName = "CPAdManagerExample.app"
+            BlueprintName = "CPAdManagerExample"
+            ReferencedContainer = "container:CPAdManagerExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -61,6 +70,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1DCA28BF1ECDFA010012E162"
+            BuildableName = "CPAdManagerExample.app"
+            BlueprintName = "CPAdManagerExample"
+            ReferencedContainer = "container:CPAdManagerExample.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

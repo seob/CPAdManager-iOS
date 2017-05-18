@@ -1,13 +1,22 @@
 # CPAdManager-iOS
 
-For people that earn money using mobile ads (Admob, Facebook Audience Network)
+CPAdManager was developed for individual developers using multiple advertising platforms.
+If the ad request fails, request an ad on the following ad platform:
+I expect your profits to go up one dollar.
+
+## Requirements
+
+* Swift >= 3.1
+* FBAudienceNetwork >= 4.22
+* Firebase/AdMob >= 3.17
 
 ## Feature
 
-* Admob
-* Facebook Audience Network
-* Banner Ad (only portrait)
-* Interstitial Ad
+* Support Admob, Facebook-Audience-Network
+  * Support Interstitial AD
+  * Support Banner Ad (only portrait)
+* If fail to load, request ad automatically.
+* Delegation of AD load completion and failure.
 
 ## Usage
 
@@ -59,3 +68,7 @@ class ViewController: UIViewController {
     }
 }
 ```
+
+## License
+
+CPAdManager-iOS is released under the MIT license. [See LICENSE](https://github.com/yoonhg84/CPAdManager-iOS/blob/master/LICENSE) for details.
