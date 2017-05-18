@@ -27,14 +27,14 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5Nv-Ah-mdf"/>
                                 </constraints>
-                                <state key="normal" title="Request interstitial ad">
+                                <state key="normal" title="Request banner ad">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="disabled">
                                     <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="requestAd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mGH-qV-fBe"/>
+                                    <action selector="requestBanner:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xHq-dv-aYg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="96O-40-Vd4">
@@ -53,25 +53,38 @@
                                     <action selector="showInterstitialAd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9P1-Jj-cUR"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6hE-Xr-hWF">
+                                <rect key="frame" x="0.0" y="283.5" width="375" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="grG-Hs-wXT"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.71372549019999998" green="0.71372549019999998" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6hE-Xr-hWF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7ju-rs-BJA"/>
                             <constraint firstAttribute="trailing" secondItem="96O-40-Vd4" secondAttribute="trailing" constant="20" id="9Pr-u6-VEg"/>
                             <constraint firstItem="vkS-V2-1xd" firstAttribute="top" secondItem="96O-40-Vd4" secondAttribute="bottom" constant="8" id="FCj-e2-ofz"/>
+                            <constraint firstItem="6hE-Xr-hWF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="bmg-DU-gkI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vkS-V2-1xd" secondAttribute="bottom" constant="20" id="jif-LY-JP3"/>
+                            <constraint firstItem="6hE-Xr-hWF" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="k1r-yZ-Z5X"/>
                             <constraint firstAttribute="trailing" secondItem="vkS-V2-1xd" secondAttribute="trailing" constant="20" id="kF1-6Z-Dn7"/>
+                            <constraint firstAttribute="trailing" secondItem="6hE-Xr-hWF" secondAttribute="trailing" id="qDE-WI-fsj"/>
                             <constraint firstItem="96O-40-Vd4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="toS-z2-Ecv"/>
                             <constraint firstItem="vkS-V2-1xd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="usv-NZ-5fn"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="requestInterstitialButton" destination="vkS-V2-1xd" id="WDe-wx-Oxy"/>
+                        <outlet property="bannerContainerView" destination="6hE-Xr-hWF" id="VzQ-KV-c3D"/>
+                        <outlet property="bannerContainerViewHeightConstraint" destination="grG-Hs-wXT" id="tvW-15-Lls"/>
+                        <outlet property="requestBannerButton" destination="vkS-V2-1xd" id="FTe-Mw-3po"/>
                         <outlet property="showInterstitialButton" destination="96O-40-Vd4" id="4dd-7x-dEW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="303" y="389"/>
+            <point key="canvasLocation" x="301.60000000000002" y="388.15592203898052"/>
         </scene>
     </scenes>
 </document>
