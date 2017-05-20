@@ -24,6 +24,7 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
 
+  s.preserve_paths = 'AdPlatforms/*.framework'
   s.ios.vendored_frameworks = 'AdPlatforms/FBAudienceNetwork.framework', 'AdPlatforms/GoogleMobileAds.framework'
 
 end
