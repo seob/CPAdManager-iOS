@@ -13,7 +13,7 @@ open class CPAdmobInterstitialAd: CPInterstitialAd {
 
     private let unitId: String
 
-    init(unitId: String) {
+    public init(unitId: String) {
         self.unitId = unitId
         super.init()
     }

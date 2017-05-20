@@ -12,7 +12,7 @@ open class CPFacebookInterstitialAd: CPInterstitialAd {
     private var interstitialAd: FBInterstitialAd?
     private let placementId: String
 
-    init(placementId: String) {
+    public init(placementId: String) {
         self.placementId = placementId
         super.init()
 

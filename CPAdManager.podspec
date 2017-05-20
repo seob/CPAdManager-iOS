@@ -24,7 +24,6 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
 
-  s.ios.dependency 'Firebase/Core'
-  s.ios.dependency 'Firebase/AdMob'
-  s.ios.dependency 'FBAudienceNetwork'
+  s.ios.vendored_frameworks = 'AdPlatforms/FBAudienceNetwork.framework', 'AdPlatforms/GoogleMobileAds.framework'
+
 end

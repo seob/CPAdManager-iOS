@@ -30,9 +30,9 @@ open class CPBannerAdManager {
     fileprivate var adQueue: AdPlatformQueue<CPBannerAd>
     fileprivate var errorController: ErrorController
 
-    var failForDebug = false
+    public var failForDebug = false
 
-    init(bannerAds: [CPBannerAd], firstAd: CPBannerAd? = nil) {
+    public init(bannerAds: [CPBannerAd], firstAd: CPBannerAd? = nil) {
         adQueue = AdPlatformQueue(ads: bannerAds, firstAd: firstAd)
         errorController = ErrorController(threshold: bannerAds.count)
         errorController.onError = { [weak self] in
@@ -43,7 +43,7 @@ open class CPBannerAdManager {
         bannerAds.forEach { $0.set(delegate: self) }
     }
 
-    func request() {
+    public func request() {
         assert(rootViewController != nil)
         assert(containerView != nil)
 
@@ -63,7 +63,7 @@ extension CPBannerAdManager: CPBannerAdDelegate {
             onFailedToLoad(bannerAd: bannerAd, error: AdError.notExistBannerView)
             return
         }
-        guard failForDebug == false, arc4random_uniform(2) == 0 else {
+        if failForDebug == true, arc4random_uniform(2) == 0 {
             onFailedToLoad(bannerAd: bannerAd, error: AdError.testFailure)
             return
         }

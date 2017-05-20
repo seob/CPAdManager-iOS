@@ -6,12 +6,12 @@
 import Foundation
 import GoogleMobileAds
 
-public class CPAdmobBannerAd: CPBannerAd {
+open class CPAdmobBannerAd: CPBannerAd {
     let unitId: String
     var adView: GADBannerView?
     var delegate: CPBannerAdDelegate?
 
-    init(unitId: String) {
+    public init(unitId: String) {
         self.unitId = unitId
     }
 

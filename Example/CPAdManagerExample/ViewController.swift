@@ -8,6 +8,7 @@
 
 
 import UIKit
+import CPAdManager
 
 
 class ViewController: UIViewController, CPInterstitialAdManagerDelegate, CPBannerAdManagerDelegate {
@@ -49,7 +50,8 @@ class ViewController: UIViewController, CPInterstitialAdManagerDelegate, CPBanne
         bannerAdManager.containerView = bannerContainerView
         bannerAdManager.rootViewController = self
         bannerAdManager.containerViewHeightConstraint = bannerContainerViewHeightConstraint
-        bannerAdManager.delegate = self 
+        bannerAdManager.delegate = self
+        bannerAdManager.failForDebug = true
     }
 
     override func viewDidAppear(_ animated: Bool) {

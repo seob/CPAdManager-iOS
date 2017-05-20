@@ -61,7 +61,7 @@ open class CPInterstitialAdManager {
 
 extension CPInterstitialAdManager: CPInterstitialAdDelegate {
     public func onLoaded(interstitialAd: CPInterstitialAd) {
-        if failForDebug && arc4random_uniform(2) == 0 {
+        if failForDebug == true && arc4random_uniform(2) == 0 {
             onFailedToLoad(interstitialAd: interstitialAd, error: AdError.testFailure)
             return
         }

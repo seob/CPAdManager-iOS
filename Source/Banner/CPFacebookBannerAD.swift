@@ -13,7 +13,7 @@ open class CPFacebookBannerAd: CPBannerAd {
 
     private let placementId: String
 
-    init(placementId: String) {
+    public init(placementId: String) {
         self.placementId = placementId
     }
 
