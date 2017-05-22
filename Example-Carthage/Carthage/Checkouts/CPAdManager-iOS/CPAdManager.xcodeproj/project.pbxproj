@@ -1,0 +1,382 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D27149E1ED0A9C300D62539 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D27149C1ED0A9C300D62539 /* GoogleMobileAds.framework */; };
+		1D27149F1ED0A9C300D62539 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D27149D1ED0A9C300D62539 /* FBAudienceNetwork.framework */; };
+		3E11B0046F7C67657D6AE50A /* CPBannerAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BA27B3CCD3B580F6BE74 /* CPBannerAdManager.swift */; };
+		3E11B068E58ED676D6909E72 /* CPAdmobInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B860EFAA2BFF32C7F664 /* CPAdmobInterstitialAd.swift */; };
+		3E11B204446BC6E6C38F6D0A /* AdPlatformQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BDC22294845D2C3DB1B1 /* AdPlatformQueue.swift */; };
+		3E11B6B5D56656567D3930C5 /* CPFacebookBannerAD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B46FAB8CBD0B6AEE866C /* CPFacebookBannerAD.swift */; };
+		3E11B7A172DEC7EA3401082A /* CPUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BD776876CDB35C2440A3 /* CPUtil.swift */; };
+		3E11B8D6D9803B83C92A43D3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B0584D995D674A033137 /* Constants.swift */; };
+		3E11BA1C431B3607C470B554 /* ErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BB2624A0560CCA923CCA /* ErrorController.swift */; };
+		3E11BB4B6415F19D71258610 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E11BA9F493100CEF74A5F00 /* Info.plist */; };
+		3E11BDB5CB3C436F58A56111 /* CPAdmobBannerAD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B2261689F30181511522 /* CPAdmobBannerAD.swift */; };
+		3E11BEC5DD335A0F5880D8E0 /* CPInterstitialAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BE067D57694E9F02ED40 /* CPInterstitialAdManager.swift */; };
+		3E11BF6720AAD5885B95A60C /* CPFacebookInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BD4AB78CDD9D69A1C728 /* CPFacebookInterstitialAd.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D27148B1ED0A8A000D62539 /* CPAdManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CPAdManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D27149C1ED0A9C300D62539 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		1D27149D1ED0A9C300D62539 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
+		3E11B0584D995D674A033137 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3E11B2261689F30181511522 /* CPAdmobBannerAD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPAdmobBannerAD.swift; sourceTree = "<group>"; };
+		3E11B46FAB8CBD0B6AEE866C /* CPFacebookBannerAD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPFacebookBannerAD.swift; sourceTree = "<group>"; };
+		3E11B860EFAA2BFF32C7F664 /* CPAdmobInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPAdmobInterstitialAd.swift; sourceTree = "<group>"; };
+		3E11BA27B3CCD3B580F6BE74 /* CPBannerAdManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPBannerAdManager.swift; sourceTree = "<group>"; };
+		3E11BA9F493100CEF74A5F00 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		3E11BB2624A0560CCA923CCA /* ErrorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorController.swift; sourceTree = "<group>"; };
+		3E11BD4AB78CDD9D69A1C728 /* CPFacebookInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPFacebookInterstitialAd.swift; sourceTree = "<group>"; };
+		3E11BD776876CDB35C2440A3 /* CPUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPUtil.swift; sourceTree = "<group>"; };
+		3E11BDC22294845D2C3DB1B1 /* AdPlatformQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdPlatformQueue.swift; sourceTree = "<group>"; };
+		3E11BE067D57694E9F02ED40 /* CPInterstitialAdManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPInterstitialAdManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D2714871ED0A8A000D62539 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D27149E1ED0A9C300D62539 /* GoogleMobileAds.framework in Frameworks */,
+				1D27149F1ED0A9C300D62539 /* FBAudienceNetwork.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D2714811ED0A8A000D62539 = {
+			isa = PBXGroup;
+			children = (
+				1D27149B1ED0A9AB00D62539 /* AdPlatforms */,
+				1D27148C1ED0A8A000D62539 /* Products */,
+				3E11BA2ABA65C5AB61FD8CF5 /* Source */,
+			);
+			sourceTree = "<group>";
+		};
+		1D27148C1ED0A8A000D62539 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D27148B1ED0A8A000D62539 /* CPAdManager.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1D27149B1ED0A9AB00D62539 /* AdPlatforms */ = {
+			isa = PBXGroup;
+			children = (
+				1D27149C1ED0A9C300D62539 /* GoogleMobileAds.framework */,
+				1D27149D1ED0A9C300D62539 /* FBAudienceNetwork.framework */,
+			);
+			path = AdPlatforms;
+			sourceTree = "<group>";
+		};
+		3E11B3A95790BAB893E508B2 /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				3E11B2261689F30181511522 /* CPAdmobBannerAD.swift */,
+				3E11BA27B3CCD3B580F6BE74 /* CPBannerAdManager.swift */,
+				3E11B46FAB8CBD0B6AEE866C /* CPFacebookBannerAD.swift */,
+			);
+			path = Banner;
+			sourceTree = "<group>";
+		};
+		3E11B82204B907A93EA87D78 /* Interstitial */ = {
+			isa = PBXGroup;
+			children = (
+				3E11B860EFAA2BFF32C7F664 /* CPAdmobInterstitialAd.swift */,
+				3E11BE067D57694E9F02ED40 /* CPInterstitialAdManager.swift */,
+				3E11BD4AB78CDD9D69A1C728 /* CPFacebookInterstitialAd.swift */,
+			);
+			path = Interstitial;
+			sourceTree = "<group>";
+		};
+		3E11BA2ABA65C5AB61FD8CF5 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				3E11B3A95790BAB893E508B2 /* Banner */,
+				3E11BA9F493100CEF74A5F00 /* Info.plist */,
+				3E11BD776876CDB35C2440A3 /* CPUtil.swift */,
+				3E11B82204B907A93EA87D78 /* Interstitial */,
+				3E11B0584D995D674A033137 /* Constants.swift */,
+				3E11BDC22294845D2C3DB1B1 /* AdPlatformQueue.swift */,
+				3E11BB2624A0560CCA923CCA /* ErrorController.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1D2714881ED0A8A000D62539 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1D27148A1ED0A8A000D62539 /* CPAdManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D2714931ED0A8A000D62539 /* Build configuration list for PBXNativeTarget "CPAdManager" */;
+			buildPhases = (
+				1D2714861ED0A8A000D62539 /* Sources */,
+				1D2714871ED0A8A000D62539 /* Frameworks */,
+				1D2714881ED0A8A000D62539 /* Headers */,
+				1D2714891ED0A8A000D62539 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CPAdManager;
+			productName = CPAdManager;
+			productReference = 1D27148B1ED0A8A000D62539 /* CPAdManager.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1D2714821ED0A8A000D62539 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = ChopeIndustry;
+				TargetAttributes = {
+					1D27148A1ED0A8A000D62539 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = JKB83V3G9Q;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1D2714851ED0A8A000D62539 /* Build configuration list for PBXProject "CPAdManager" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1D2714811ED0A8A000D62539;
+			productRefGroup = 1D27148C1ED0A8A000D62539 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D27148A1ED0A8A000D62539 /* CPAdManager */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D2714891ED0A8A000D62539 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E11BB4B6415F19D71258610 /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D2714861ED0A8A000D62539 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E11BDB5CB3C436F58A56111 /* CPAdmobBannerAD.swift in Sources */,
+				3E11B0046F7C67657D6AE50A /* CPBannerAdManager.swift in Sources */,
+				3E11B6B5D56656567D3930C5 /* CPFacebookBannerAD.swift in Sources */,
+				3E11B7A172DEC7EA3401082A /* CPUtil.swift in Sources */,
+				3E11B068E58ED676D6909E72 /* CPAdmobInterstitialAd.swift in Sources */,
+				3E11BEC5DD335A0F5880D8E0 /* CPInterstitialAdManager.swift in Sources */,
+				3E11BF6720AAD5885B95A60C /* CPFacebookInterstitialAd.swift in Sources */,
+				3E11B8D6D9803B83C92A43D3 /* Constants.swift in Sources */,
+				3E11B204446BC6E6C38F6D0A /* AdPlatformQueue.swift in Sources */,
+				3E11BA1C431B3607C470B554 /* ErrorController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D2714911ED0A8A000D62539 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		1D2714921ED0A8A000D62539 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1D2714941ED0A8A000D62539 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = JKB83V3G9Q;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AdPlatforms",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.chopestory.CPAdManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		1D2714951ED0A8A000D62539 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = JKB83V3G9Q;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AdPlatforms",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.chopestory.CPAdManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D2714851ED0A8A000D62539 /* Build configuration list for PBXProject "CPAdManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D2714911ED0A8A000D62539 /* Debug */,
+				1D2714921ED0A8A000D62539 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1D2714931ED0A8A000D62539 /* Build configuration list for PBXNativeTarget "CPAdManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D2714941ED0A8A000D62539 /* Debug */,
+				1D2714951ED0A8A000D62539 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1D2714821ED0A8A000D62539 /* Project object */;
+}
