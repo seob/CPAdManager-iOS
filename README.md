@@ -1,74 +1,321 @@
-# CPAdManager-iOS
+# CPAdManager
 
-CPAdManager was developed for individual developers using multiple advertising platforms.
-If the ad request fails, request an ad on the following ad platform:
-I expect your profits to go up one dollar.
+A library that lists possible ads by requesting multiple ad platforms in sequence.
 
-## Requirements
-
-* Swift >= 3.1
-* FBAudienceNetwork >= 4.22
-* Firebase/AdMob >= 3.17
+Make more money with the ad platform.
 
 ## Feature
 
-* Support Admob, Facebook-Audience-Network
-  * Support Interstitial AD
-  * Support Banner Ad (only portrait)
-* If fail to load, request ad automatically.
-* Delegation of AD load completion and failure.
+* Admob
+  * Banner Ad (only portrait)
+  * Interstitial Ad
+* Facebook Audience Network
+  * Banner Ad (only portrait)
+  * Interstitial Ad
+* Util
+  * is installed facebook util
+
+##Installation
+
+### CocoaPods
+```
+pod 'CPAdManager-iOS'
+```
+
+The version of FBAudienceNetwork and GoogleMobileAds framework is not added as cocoapods dependency, so the version depends on CPAdManager-iOS.
+If you want to update the version, please post it on the issue.
+
+### Carthage
+```
+github "yoonhg84/CPAdManager-iOS"
+```
+
+Please add FBAudienceNetwork and GoogleMobileAds framework directly.
 
 ## Usage
 
+If you have Facebook installed: 1) FBAudienceNetwork, 2) Admob.
+Or, 1) Admob, 2) FBAudienceNetwork.
+
 ### Interstitial Ad
 
-Show interstitial ad after loaded
-
 ```swift
-class ViewController : UIViewController {
-  let interstitialAdManager = CPInterstitialAdManager([
-          CPFacebookInterstitialAd("Facebook Audience Network placement id"),
-          CPAdmobInterstitialAd("Admob ad unit id")
-  ])
+class ViewController: UIViewController, CPInterstitialAdManagerDelegate {
+    @IBOutlet fileprivate weak var showInterstitialButton: UIButton!
 
-  override func viewDidLoad() {
-      super.viewDidLoad()
+    private let admob: CPInterstitialAd = CPAdmobInterstitialAd(unitId: "{unitId}")
+    private let facebook: CPInterstitialAd = CPFacebookInterstitialAd(placementId: "{placementId}")
+    private let interstitialAdManager: CPInterstitialAdManager
 
-      self.interstitialAdManager.setShowAfterLoadedAd(true, viewController: self)
-      self.interstitialAdManager.requestAd(nil)
-  }
+    public required init?(coder aDecoder: NSCoder) {
+        interstitialAdManager = CPInterstitialAdManager(interstitialAds: [
+                admob,
+                facebook,
+        ], firstAd: CPUtil.isInstalledFacebook() ? facebook : admob)
+        
+        super.init(coder: aDecoder)
+    }
+
+    override func viewDidLoad() {
+	    super.viewDidLoad()
+        interstitialAdManager.delegate = self
+        interstitialAdManager.failForDebug = true
+        interstitialAdManager.requestAd()
+    }
+
+	@IBAction func showInterstitialAd(_ button: UIButton?) {
+        interstitialAdManager.show(from: self)
+        button?.isEnabled = false
+    }
+
+    func onLoaded(interstitialAdManager: CPInterstitialAdManager) {
+        showInterstitialButton?.isEnabled = true
+    }
+
+    func onFailedToLoad(interstitialAdManager: CPInterstitialAdManager) {
+        showInterstitialButton?.isEnabled = false
+    }
+
+    func onDismissed(interstitialAd: CPInterstitialAdManager) {
+    }
 }
-```
-
-Show interstitial when click
-
-```swift
-soon...
 ```
 
 ### Banner Ad
 
 ```swift
-class ViewController: UIViewController {
-    @IBOutlet weak var bannerContainerHeightLayoutConstraint: NSLayoutConstraint?
-    @IBOutlet weak var bannerContainerView: UIView?
-    var bannerAdManager: CPBannerAdManager?
+class ViewController: UIViewController, CPBannerAdManagerDelegate {
+    @IBOutlet fileprivate weak var requestBannerButton: UIButton!
+    @IBOutlet fileprivate weak var bannerContainerView: UIView!
+    @IBOutlet fileprivate weak var bannerContainerViewHeightConstraint: NSLayoutConstraint!
+
+    private let admobBanner = CPAdmobBannerAd(unitId: "{unitId}")
+    private let facebookBanner = CPFacebookBannerAd(placementId: "{placementId}")
+    private let bannerAdManager: CPBannerAdManager
+
+    public required init?(coder aDecoder: NSCoder) {
+        bannerAdManager = CPBannerAdManager(bannerAds: [
+                admobBanner,
+                facebookBanner
+        ], firstAd: CPUtil.isInstalledFacebook() ? facebookBanner: admobBanner)
+
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        bannerAdManager.containerView = bannerContainerView
+        bannerAdManager.rootViewController = self
+        bannerAdManager.containerViewHeightConstraint = bannerContainerViewHeightConstraint
+        bannerAdManager.delegate = self
+        bannerAdManager.failForDebug = true
+    }
 
-        self.bannerContainerHeightLayoutConstraint?.constant = (UIDevice.currentDevice().userInterfaceIdiom == .Pad) ? 90 : 50
-        self.bannerAdManager = CPBannerAdManager(self, ads: [
-                CPFacebookBannerAd("Facebook Audience Network placement id"),
-                CPAdmobBannerAd("Admob ad unit id")
-        ])
-        self.bannerAdManager?.rootViewController = self
-        self.bannerAdManager?.containerView = self.bannerContainerView
-        self.bannerAdManager?.request()
+    @IBAction func requestBanner(_ button: UIButton?) {
+        button?.isEnabled = false
+        bannerAdManager.request()
+    }
+
+    func onFailedToLoad(bannerAdManager: CPBannerAdManager) {
+        requestBannerButton.isEnabled = true
+    }
+
+    func onLoaded(bannerAdManager: CPBannerAdManager, height: CGFloat) {
+        requestBannerButton.isEnabled = true
+    }
+
+}
+```
+
+## Add AD Platform
+
+### Banner
+
+Override CPBannerAd.
+
+```swift
+open class CPBannerAd: NSObject {
+    func request(in viewController: UIViewController) { }
+    func set(delegate: CPBannerAdDelegate) { }
+    func bannerView() -> UIView? { return nil }
+}
+```
+
+### Interstitial
+
+Overrides CPInterstitialAd.
+
+```swift
+open class CPInterstitialAd: NSObject {
+    func requestAd() { }
+    func ready() -> Bool { return false }
+    func show(ad viewController: UIViewController) { }
+    func set(delegate: CPInterstitialAdDelegate) { }
+}
+```
+
+##License
+CPAdManager is released under the MIT license. [See LICENSE](https://github.com/yoonhg84/CPAdManager-iOS/blob/master/LICENSE) for details.
+
+
+
+# CPAdManager
+
+복수개의 광고 플랫폼을 순서대로 요청하여 가능한 광고를 보여주는 라이브러리 입니다.
+
+광고 플랫폼을 이용하여 더 많은 수익을 올리세요.
+
+## Feature
+
+* Admob
+  * Banner Ad (only portrait)
+  * Interstitial Ad
+* Facebook Audience Network
+  * Banner Ad (only portrait)
+  * Interstitial Ad
+* Util
+  * is installed facebook util
+
+##Installation
+
+### CocoaPods
+```
+pod 'CPAdManager-iOS'
+```
+
+FBAudienceNetwork, GoogleMobileAds framework 의 버전은 cocoapods dependency 로 추가되지 않기 때문에 버전이 CPAdManager-iOS 에 의존적입니다. 
+버전 업데이트를 원하시면 issue에 올려주세요.
+
+### Carthage
+```
+github "yoonhg84/CPAdManager-iOS"
+```
+
+FBAudienceNetwork, GoogleMobileAds framework 를 직접 추가해 주세요.
+
+Please add FBAudienceNetwork and GoogleMobileAds framework directly.
+
+## Usage
+
+Facebook 이 설치되어 있으면 FBAudienceNetwork, Admob 순으로 요청합니다.
+아니면 Admob, FBAudienceNetwork 순으로 요청합니다.
+
+### Interstitial Ad
+
+```swift
+class ViewController: UIViewController, CPInterstitialAdManagerDelegate {
+    @IBOutlet fileprivate weak var showInterstitialButton: UIButton!
+
+    private let admob: CPInterstitialAd = CPAdmobInterstitialAd(unitId: "{unitId}")
+    private let facebook: CPInterstitialAd = CPFacebookInterstitialAd(placementId: "{placementId}")
+    private let interstitialAdManager: CPInterstitialAdManager
+
+    public required init?(coder aDecoder: NSCoder) {
+        interstitialAdManager = CPInterstitialAdManager(interstitialAds: [
+                admob,
+                facebook,
+        ], firstAd: CPUtil.isInstalledFacebook() ? facebook : admob)
+        
+        super.init(coder: aDecoder)
+    }
+
+    override func viewDidLoad() {
+	    super.viewDidLoad()
+        interstitialAdManager.delegate = self
+        interstitialAdManager.failForDebug = true
+        interstitialAdManager.requestAd()
+    }
+
+	@IBAction func showInterstitialAd(_ button: UIButton?) {
+        interstitialAdManager.show(from: self)
+        button?.isEnabled = false
+    }
+
+    func onLoaded(interstitialAdManager: CPInterstitialAdManager) {
+        showInterstitialButton?.isEnabled = true
+    }
+
+    func onFailedToLoad(interstitialAdManager: CPInterstitialAdManager) {
+        showInterstitialButton?.isEnabled = false
+    }
+
+    func onDismissed(interstitialAd: CPInterstitialAdManager) {
     }
 }
 ```
 
-## License
+### Banner Ad
 
-CPAdManager-iOS is released under the MIT license. [See LICENSE](https://github.com/yoonhg84/CPAdManager-iOS/blob/master/LICENSE) for details.
+```swift
+class ViewController: UIViewController, CPBannerAdManagerDelegate {
+    @IBOutlet fileprivate weak var requestBannerButton: UIButton!
+    @IBOutlet fileprivate weak var bannerContainerView: UIView!
+    @IBOutlet fileprivate weak var bannerContainerViewHeightConstraint: NSLayoutConstraint!
+
+    private let admobBanner = CPAdmobBannerAd(unitId: "{unitId}")
+    private let facebookBanner = CPFacebookBannerAd(placementId: "{placementId}")
+    private let bannerAdManager: CPBannerAdManager
+
+    public required init?(coder aDecoder: NSCoder) {
+        bannerAdManager = CPBannerAdManager(bannerAds: [
+                admobBanner,
+                facebookBanner
+        ], firstAd: CPUtil.isInstalledFacebook() ? facebookBanner: admobBanner)
+
+        super.init(coder: aDecoder)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        bannerAdManager.containerView = bannerContainerView
+        bannerAdManager.rootViewController = self
+        bannerAdManager.containerViewHeightConstraint = bannerContainerViewHeightConstraint
+        bannerAdManager.delegate = self
+        bannerAdManager.failForDebug = true
+    }
+
+    @IBAction func requestBanner(_ button: UIButton?) {
+        button?.isEnabled = false
+        bannerAdManager.request()
+    }
+
+    func onFailedToLoad(bannerAdManager: CPBannerAdManager) {
+        requestBannerButton.isEnabled = true
+    }
+
+    func onLoaded(bannerAdManager: CPBannerAdManager, height: CGFloat) {
+        requestBannerButton.isEnabled = true
+    }
+
+}
+```
+
+## Add AD Platform
+
+### Banner
+
+CPBannerAd 를 상속 받아 override.
+
+```swift
+open class CPBannerAd: NSObject {
+    func request(in viewController: UIViewController) { }
+    func set(delegate: CPBannerAdDelegate) { }
+    func bannerView() -> UIView? { return nil }
+}
+```
+
+### Interstitial
+
+CPInterstitialAd 를 상속 받아 override.
+
+```swift
+open class CPInterstitialAd: NSObject {
+    func requestAd() { }
+    func ready() -> Bool { return false }
+    func show(ad viewController: UIViewController) { }
+    func set(delegate: CPInterstitialAdDelegate) { }
+}
+```
+
+##License
+CPAdManager is released under the MIT license. [See LICENSE](https://github.com/yoonhg84/CPAdManager-iOS/blob/master/LICENSE) for details.
