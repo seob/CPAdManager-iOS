@@ -76,7 +76,12 @@ class ViewController: UIViewController, CPInterstitialAdManagerDelegate, CPBanne
         showInterstitialButton?.isEnabled = false
     }
 
-    func onDismissed(interstitialAd: CPInterstitialAdManager) {
+    func onWillDismissed(interstitialAdManager: CPInterstitialAdManager) {
+        print("CPAdManager: will dismiss interstitial ad")
+    }
+
+    func onDidDismissed(interstitialAdManager: CPInterstitialAdManager) {
+        print("CPAdManager: did dismiss interstitial ad")
     }
 
     func onFailedToLoad(bannerAdManager: CPBannerAdManager) {
@@ -84,7 +89,7 @@ class ViewController: UIViewController, CPInterstitialAdManagerDelegate, CPBanne
     }
 
     func onLoaded(bannerAdManager: CPBannerAdManager, height: CGFloat) {
-        print("chope: \(bannerContainerViewHeightConstraint.constant): (height)")
+        print("CPAdManager: \(bannerContainerViewHeightConstraint.constant): (height)")
         requestBannerButton.isEnabled = true
     }
 

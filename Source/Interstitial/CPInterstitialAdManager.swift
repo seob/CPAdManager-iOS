@@ -15,17 +15,20 @@ open class CPInterstitialAd: NSObject {
 public protocol CPInterstitialAdDelegate: class {
     func onLoaded(interstitialAd: CPInterstitialAd)
     func onFailedToLoad(interstitialAd: CPInterstitialAd, error: Error)
-    func onDismissed(interstitialAd: CPInterstitialAd)
+    func onWillDismissed(interstitialAd: CPInterstitialAd)
+    func onDidDismissed(interstitialAd: CPInterstitialAd)
 }
 
 public protocol CPInterstitialAdManagerDelegate: class {
     func onLoaded(interstitialAdManager: CPInterstitialAdManager)
     func onFailedToLoad(interstitialAdManager: CPInterstitialAdManager)
-    func onDismissed(interstitialAd: CPInterstitialAdManager)
+    func onWillDismissed(interstitialAdManager: CPInterstitialAdManager)
+    func onDidDismissed(interstitialAdManager: CPInterstitialAdManager)
 }
 
 open class CPInterstitialAdManager {
     public var failForDebug: Bool = true
+    public var isAutoRefreshMode: Bool = true
 
     public weak var delegate: CPInterstitialAdManagerDelegate?
 
@@ -77,8 +80,15 @@ extension CPInterstitialAdManager: CPInterstitialAdDelegate {
         requestAd()
     }
 
-    public func onDismissed(interstitialAd: CPInterstitialAd) {
-        delegate?.onDismissed(interstitialAd: self)
-        requestAd()
+    public func onWillDismissed(interstitialAd: CPInterstitialAd) {
+        delegate?.onWillDismissed(interstitialAdManager: self)
+    }
+
+    public func onDidDismissed(interstitialAd: CPInterstitialAd) {
+        delegate?.onDidDismissed(interstitialAdManager: self)
+
+        if isAutoRefreshMode {
+            requestAd()
+        }
     }
 }

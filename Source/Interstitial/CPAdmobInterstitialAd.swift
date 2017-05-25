@@ -55,7 +55,11 @@ extension CPAdmobInterstitialAd: GADInterstitialDelegate {
         delegate?.onFailedToLoad(interstitialAd: self, error: error)
     }
 
+    public func interstitialWillDismissScreen(_ ad: GADInterstitial) {
+        delegate?.onWillDismissed(interstitialAd: self)
+    }
+
     public func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-        delegate?.onDismissed(interstitialAd: self)
+        delegate?.onDidDismissed(interstitialAd: self)
     }
 }

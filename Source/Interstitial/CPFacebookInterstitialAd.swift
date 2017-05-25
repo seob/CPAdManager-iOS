@@ -43,8 +43,12 @@ open class CPFacebookInterstitialAd: CPInterstitialAd {
 }
 
 extension CPFacebookInterstitialAd: FBInterstitialAdDelegate {
+    public func interstitialAdWillClose(_ interstitialAd: FBInterstitialAd) {
+        delegate?.onWillDismissed(interstitialAd: self)
+    }
+
     public func interstitialAdDidClose(_ interstitialAd: FBInterstitialAd) {
-        delegate?.onDismissed(interstitialAd: self)
+        delegate?.onDidDismissed(interstitialAd: self)
     }
 
     public func interstitialAdDidLoad(_ interstitialAd: FBInterstitialAd) {
