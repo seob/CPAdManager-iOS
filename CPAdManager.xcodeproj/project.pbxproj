@@ -7,115 +7,135 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D27149E1ED0A9C300D62539 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D27149C1ED0A9C300D62539 /* GoogleMobileAds.framework */; };
-		1D27149F1ED0A9C300D62539 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D27149D1ED0A9C300D62539 /* FBAudienceNetwork.framework */; };
-		3E11B0046F7C67657D6AE50A /* CPBannerAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BA27B3CCD3B580F6BE74 /* CPBannerAdManager.swift */; };
-		3E11B068E58ED676D6909E72 /* CPAdmobInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B860EFAA2BFF32C7F664 /* CPAdmobInterstitialAd.swift */; };
-		3E11B204446BC6E6C38F6D0A /* AdPlatformQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BDC22294845D2C3DB1B1 /* AdPlatformQueue.swift */; };
-		3E11B6B5D56656567D3930C5 /* CPFacebookBannerAD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B46FAB8CBD0B6AEE866C /* CPFacebookBannerAD.swift */; };
-		3E11B7A172DEC7EA3401082A /* CPUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BD776876CDB35C2440A3 /* CPUtil.swift */; };
-		3E11B8D6D9803B83C92A43D3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B0584D995D674A033137 /* Constants.swift */; };
-		3E11BA1C431B3607C470B554 /* ErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BB2624A0560CCA923CCA /* ErrorController.swift */; };
-		3E11BB4B6415F19D71258610 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E11BA9F493100CEF74A5F00 /* Info.plist */; };
-		3E11BDB5CB3C436F58A56111 /* CPAdmobBannerAD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B2261689F30181511522 /* CPAdmobBannerAD.swift */; };
-		3E11BEC5DD335A0F5880D8E0 /* CPInterstitialAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BE067D57694E9F02ED40 /* CPInterstitialAdManager.swift */; };
-		3E11BF6720AAD5885B95A60C /* CPFacebookInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BD4AB78CDD9D69A1C728 /* CPFacebookInterstitialAd.swift */; };
+		1DC0F1131F00021F0077DA79 /* CPAdManager.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 1DC0F1101F00021F0077DA79 /* CPAdManager.podspec */; };
+		1DC0F1181F00027F0077DA79 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC0F1161F00027F0077DA79 /* GoogleMobileAds.framework */; };
+		1DC0F1191F00027F0077DA79 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC0F1171F00027F0077DA79 /* FBAudienceNetwork.framework */; };
+		3E11B049B42D5B02F4FEABEF /* CPAdmobNativeAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BAE54F68E0917C6DA531 /* CPAdmobNativeAd.swift */; };
+		3E11B1F63F23B75C12ECAD20 /* CPNativeAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BA4734FCAE2C3C458AD9 /* CPNativeAdManager.swift */; };
+		3E11B4295F74C1B1FD8F643F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E11BADADEA912081EC2FE0E /* Info.plist */; };
+		3E11B4EA7173CF6E3A4610D5 /* CPAdmobBannerAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B26422E64D5DA09FA24B /* CPAdmobBannerAd.swift */; };
+		3E11B5A9B10B73B5FD0F93B1 /* CPFacebookBannerAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B8361CC00B7584EEB820 /* CPFacebookBannerAd.swift */; };
+		3E11B68AD50C02A2C61F45DD /* CPBannerAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BC9B8230D33F00620268 /* CPBannerAdManager.swift */; };
+		3E11B698925593352F74D22D /* AdPlatformQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BFAD4B2577E1FFD0B486 /* AdPlatformQueue.swift */; };
+		3E11B75A754994B3C767A06E /* CPUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B92061945CD1182C2402 /* CPUtil.swift */; };
+		3E11B760C0502B48E1766B09 /* CPAdmobInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B181BDD962607547095A /* CPAdmobInterstitialAd.swift */; };
+		3E11B7C88408506C0F8C1EBD /* CPFacebookInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B2EF39AC51E4216803FD /* CPFacebookInterstitialAd.swift */; };
+		3E11B939B39F1FE40CA218A1 /* CPInterstitialAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BD47E3380D86F72DC204 /* CPInterstitialAdManager.swift */; };
+		3E11BB66915A6B342A4F505B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BFB520480F224B0D1661 /* Constants.swift */; };
+		3E11BC78A95CE3E3CBFEE2F9 /* CPFacebookNativeAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B92ED69086C2E7C80E17 /* CPFacebookNativeAd.swift */; };
+		3E11BED68E68D2C3298ED50A /* ErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11B5FB38A0F6C2050B5ADB /* ErrorController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D27148B1ED0A8A000D62539 /* CPAdManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CPAdManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D27149C1ED0A9C300D62539 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
-		1D27149D1ED0A9C300D62539 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
-		3E11B0584D995D674A033137 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		3E11B2261689F30181511522 /* CPAdmobBannerAD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPAdmobBannerAD.swift; sourceTree = "<group>"; };
-		3E11B46FAB8CBD0B6AEE866C /* CPFacebookBannerAD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPFacebookBannerAD.swift; sourceTree = "<group>"; };
-		3E11B860EFAA2BFF32C7F664 /* CPAdmobInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPAdmobInterstitialAd.swift; sourceTree = "<group>"; };
-		3E11BA27B3CCD3B580F6BE74 /* CPBannerAdManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPBannerAdManager.swift; sourceTree = "<group>"; };
-		3E11BA9F493100CEF74A5F00 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
-		3E11BB2624A0560CCA923CCA /* ErrorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorController.swift; sourceTree = "<group>"; };
-		3E11BD4AB78CDD9D69A1C728 /* CPFacebookInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPFacebookInterstitialAd.swift; sourceTree = "<group>"; };
-		3E11BD776876CDB35C2440A3 /* CPUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPUtil.swift; sourceTree = "<group>"; };
-		3E11BDC22294845D2C3DB1B1 /* AdPlatformQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdPlatformQueue.swift; sourceTree = "<group>"; };
-		3E11BE067D57694E9F02ED40 /* CPInterstitialAdManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPInterstitialAdManager.swift; sourceTree = "<group>"; };
+		1DC0F1051F0001DD0077DA79 /* CPAdManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CPAdManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DC0F1101F00021F0077DA79 /* CPAdManager.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CPAdManager.podspec; sourceTree = "<group>"; };
+		1DC0F1161F00027F0077DA79 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		1DC0F1171F00027F0077DA79 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
+		3E11B181BDD962607547095A /* CPAdmobInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPAdmobInterstitialAd.swift; sourceTree = "<group>"; };
+		3E11B26422E64D5DA09FA24B /* CPAdmobBannerAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPAdmobBannerAd.swift; sourceTree = "<group>"; };
+		3E11B2EF39AC51E4216803FD /* CPFacebookInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPFacebookInterstitialAd.swift; sourceTree = "<group>"; };
+		3E11B5FB38A0F6C2050B5ADB /* ErrorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorController.swift; sourceTree = "<group>"; };
+		3E11B8361CC00B7584EEB820 /* CPFacebookBannerAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPFacebookBannerAd.swift; sourceTree = "<group>"; };
+		3E11B92061945CD1182C2402 /* CPUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPUtil.swift; sourceTree = "<group>"; };
+		3E11B92ED69086C2E7C80E17 /* CPFacebookNativeAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPFacebookNativeAd.swift; sourceTree = "<group>"; };
+		3E11BA4734FCAE2C3C458AD9 /* CPNativeAdManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPNativeAdManager.swift; sourceTree = "<group>"; };
+		3E11BADADEA912081EC2FE0E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		3E11BAE54F68E0917C6DA531 /* CPAdmobNativeAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPAdmobNativeAd.swift; sourceTree = "<group>"; };
+		3E11BC9B8230D33F00620268 /* CPBannerAdManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPBannerAdManager.swift; sourceTree = "<group>"; };
+		3E11BD47E3380D86F72DC204 /* CPInterstitialAdManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPInterstitialAdManager.swift; sourceTree = "<group>"; };
+		3E11BFAD4B2577E1FFD0B486 /* AdPlatformQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdPlatformQueue.swift; sourceTree = "<group>"; };
+		3E11BFB520480F224B0D1661 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1D2714871ED0A8A000D62539 /* Frameworks */ = {
+		1DC0F1011F0001DD0077DA79 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D27149E1ED0A9C300D62539 /* GoogleMobileAds.framework in Frameworks */,
-				1D27149F1ED0A9C300D62539 /* FBAudienceNetwork.framework in Frameworks */,
+				1DC0F1181F00027F0077DA79 /* GoogleMobileAds.framework in Frameworks */,
+				1DC0F1191F00027F0077DA79 /* FBAudienceNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1D2714811ED0A8A000D62539 = {
+		1DC0F0FB1F0001DD0077DA79 = {
 			isa = PBXGroup;
 			children = (
-				1D27149B1ED0A9AB00D62539 /* AdPlatforms */,
-				1D27148C1ED0A8A000D62539 /* Products */,
-				3E11BA2ABA65C5AB61FD8CF5 /* Source */,
+				1DC0F1101F00021F0077DA79 /* CPAdManager.podspec */,
+				1DC0F1061F0001DD0077DA79 /* Products */,
+				3E11B8F41DB6B42CA444BD64 /* Source */,
+				3E11B26565B832E6D9577560 /* AdPlatforms */,
 			);
 			sourceTree = "<group>";
 		};
-		1D27148C1ED0A8A000D62539 /* Products */ = {
+		1DC0F1061F0001DD0077DA79 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D27148B1ED0A8A000D62539 /* CPAdManager.framework */,
+				1DC0F1051F0001DD0077DA79 /* CPAdManager.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1D27149B1ED0A9AB00D62539 /* AdPlatforms */ = {
+		3E11B26565B832E6D9577560 /* AdPlatforms */ = {
 			isa = PBXGroup;
 			children = (
-				1D27149C1ED0A9C300D62539 /* GoogleMobileAds.framework */,
-				1D27149D1ED0A9C300D62539 /* FBAudienceNetwork.framework */,
+				1DC0F1161F00027F0077DA79 /* GoogleMobileAds.framework */,
+				1DC0F1171F00027F0077DA79 /* FBAudienceNetwork.framework */,
 			);
 			path = AdPlatforms;
 			sourceTree = "<group>";
 		};
-		3E11B3A95790BAB893E508B2 /* Banner */ = {
+		3E11B4A50467B50808C8EC78 /* Interstitial */ = {
 			isa = PBXGroup;
 			children = (
-				3E11B2261689F30181511522 /* CPAdmobBannerAD.swift */,
-				3E11BA27B3CCD3B580F6BE74 /* CPBannerAdManager.swift */,
-				3E11B46FAB8CBD0B6AEE866C /* CPFacebookBannerAD.swift */,
-			);
-			path = Banner;
-			sourceTree = "<group>";
-		};
-		3E11B82204B907A93EA87D78 /* Interstitial */ = {
-			isa = PBXGroup;
-			children = (
-				3E11B860EFAA2BFF32C7F664 /* CPAdmobInterstitialAd.swift */,
-				3E11BE067D57694E9F02ED40 /* CPInterstitialAdManager.swift */,
-				3E11BD4AB78CDD9D69A1C728 /* CPFacebookInterstitialAd.swift */,
+				3E11B181BDD962607547095A /* CPAdmobInterstitialAd.swift */,
+				3E11BD47E3380D86F72DC204 /* CPInterstitialAdManager.swift */,
+				3E11B2EF39AC51E4216803FD /* CPFacebookInterstitialAd.swift */,
 			);
 			path = Interstitial;
 			sourceTree = "<group>";
 		};
-		3E11BA2ABA65C5AB61FD8CF5 /* Source */ = {
+		3E11B5B1C9B87E2D23FE99DE /* Banner */ = {
 			isa = PBXGroup;
 			children = (
-				3E11B3A95790BAB893E508B2 /* Banner */,
-				3E11BA9F493100CEF74A5F00 /* Info.plist */,
-				3E11BD776876CDB35C2440A3 /* CPUtil.swift */,
-				3E11B82204B907A93EA87D78 /* Interstitial */,
-				3E11B0584D995D674A033137 /* Constants.swift */,
-				3E11BDC22294845D2C3DB1B1 /* AdPlatformQueue.swift */,
-				3E11BB2624A0560CCA923CCA /* ErrorController.swift */,
+				3E11B26422E64D5DA09FA24B /* CPAdmobBannerAd.swift */,
+				3E11BC9B8230D33F00620268 /* CPBannerAdManager.swift */,
+				3E11B8361CC00B7584EEB820 /* CPFacebookBannerAd.swift */,
+			);
+			path = Banner;
+			sourceTree = "<group>";
+		};
+		3E11B8F41DB6B42CA444BD64 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				3E11B5B1C9B87E2D23FE99DE /* Banner */,
+				3E11B98C4CA3323912695D17 /* Native */,
+				3E11B4A50467B50808C8EC78 /* Interstitial */,
+				3E11BADADEA912081EC2FE0E /* Info.plist */,
+				3E11B92061945CD1182C2402 /* CPUtil.swift */,
+				3E11BFB520480F224B0D1661 /* Constants.swift */,
+				3E11BFAD4B2577E1FFD0B486 /* AdPlatformQueue.swift */,
+				3E11B5FB38A0F6C2050B5ADB /* ErrorController.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		3E11B98C4CA3323912695D17 /* Native */ = {
+			isa = PBXGroup;
+			children = (
+				3E11BAE54F68E0917C6DA531 /* CPAdmobNativeAd.swift */,
+				3E11BA4734FCAE2C3C458AD9 /* CPNativeAdManager.swift */,
+				3E11B92ED69086C2E7C80E17 /* CPFacebookNativeAd.swift */,
+			);
+			path = Native;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1D2714881ED0A8A000D62539 /* Headers */ = {
+		1DC0F1021F0001DD0077DA79 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,14 +145,14 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1D27148A1ED0A8A000D62539 /* CPAdManager */ = {
+		1DC0F1041F0001DD0077DA79 /* CPAdManager */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D2714931ED0A8A000D62539 /* Build configuration list for PBXNativeTarget "CPAdManager" */;
+			buildConfigurationList = 1DC0F10D1F0001DD0077DA79 /* Build configuration list for PBXNativeTarget "CPAdManager" */;
 			buildPhases = (
-				1D2714861ED0A8A000D62539 /* Sources */,
-				1D2714871ED0A8A000D62539 /* Frameworks */,
-				1D2714881ED0A8A000D62539 /* Headers */,
-				1D2714891ED0A8A000D62539 /* Resources */,
+				1DC0F1001F0001DD0077DA79 /* Sources */,
+				1DC0F1011F0001DD0077DA79 /* Frameworks */,
+				1DC0F1021F0001DD0077DA79 /* Headers */,
+				1DC0F1031F0001DD0077DA79 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -140,75 +160,79 @@
 			);
 			name = CPAdManager;
 			productName = CPAdManager;
-			productReference = 1D27148B1ED0A8A000D62539 /* CPAdManager.framework */;
+			productReference = 1DC0F1051F0001DD0077DA79 /* CPAdManager.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		1D2714821ED0A8A000D62539 /* Project object */ = {
+		1DC0F0FC1F0001DD0077DA79 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = ChopeIndustry;
 				TargetAttributes = {
-					1D27148A1ED0A8A000D62539 = {
-						CreatedOnToolsVersion = 8.3.2;
+					1DC0F1041F0001DD0077DA79 = {
+						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = JKB83V3G9Q;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 1D2714851ED0A8A000D62539 /* Build configuration list for PBXProject "CPAdManager" */;
+			buildConfigurationList = 1DC0F0FF1F0001DD0077DA79 /* Build configuration list for PBXProject "CPAdManager" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 1D2714811ED0A8A000D62539;
-			productRefGroup = 1D27148C1ED0A8A000D62539 /* Products */;
+			mainGroup = 1DC0F0FB1F0001DD0077DA79;
+			productRefGroup = 1DC0F1061F0001DD0077DA79 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D27148A1ED0A8A000D62539 /* CPAdManager */,
+				1DC0F1041F0001DD0077DA79 /* CPAdManager */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1D2714891ED0A8A000D62539 /* Resources */ = {
+		1DC0F1031F0001DD0077DA79 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E11BB4B6415F19D71258610 /* Info.plist in Resources */,
+				1DC0F1131F00021F0077DA79 /* CPAdManager.podspec in Resources */,
+				3E11B4295F74C1B1FD8F643F /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1D2714861ED0A8A000D62539 /* Sources */ = {
+		1DC0F1001F0001DD0077DA79 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E11BDB5CB3C436F58A56111 /* CPAdmobBannerAD.swift in Sources */,
-				3E11B0046F7C67657D6AE50A /* CPBannerAdManager.swift in Sources */,
-				3E11B6B5D56656567D3930C5 /* CPFacebookBannerAD.swift in Sources */,
-				3E11B7A172DEC7EA3401082A /* CPUtil.swift in Sources */,
-				3E11B068E58ED676D6909E72 /* CPAdmobInterstitialAd.swift in Sources */,
-				3E11BEC5DD335A0F5880D8E0 /* CPInterstitialAdManager.swift in Sources */,
-				3E11BF6720AAD5885B95A60C /* CPFacebookInterstitialAd.swift in Sources */,
-				3E11B8D6D9803B83C92A43D3 /* Constants.swift in Sources */,
-				3E11B204446BC6E6C38F6D0A /* AdPlatformQueue.swift in Sources */,
-				3E11BA1C431B3607C470B554 /* ErrorController.swift in Sources */,
+				3E11B4EA7173CF6E3A4610D5 /* CPAdmobBannerAd.swift in Sources */,
+				3E11B68AD50C02A2C61F45DD /* CPBannerAdManager.swift in Sources */,
+				3E11B5A9B10B73B5FD0F93B1 /* CPFacebookBannerAd.swift in Sources */,
+				3E11B049B42D5B02F4FEABEF /* CPAdmobNativeAd.swift in Sources */,
+				3E11B1F63F23B75C12ECAD20 /* CPNativeAdManager.swift in Sources */,
+				3E11BC78A95CE3E3CBFEE2F9 /* CPFacebookNativeAd.swift in Sources */,
+				3E11B75A754994B3C767A06E /* CPUtil.swift in Sources */,
+				3E11B760C0502B48E1766B09 /* CPAdmobInterstitialAd.swift in Sources */,
+				3E11B939B39F1FE40CA218A1 /* CPInterstitialAdManager.swift in Sources */,
+				3E11B7C88408506C0F8C1EBD /* CPFacebookInterstitialAd.swift in Sources */,
+				3E11BB66915A6B342A4F505B /* Constants.swift in Sources */,
+				3E11B698925593352F74D22D /* AdPlatformQueue.swift in Sources */,
+				3E11BED68E68D2C3298ED50A /* ErrorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		1D2714911ED0A8A000D62539 /* Debug */ = {
+		1DC0F10B1F0001DD0077DA79 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -250,7 +274,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -262,7 +286,7 @@
 			};
 			name = Debug;
 		};
-		1D2714921ED0A8A000D62539 /* Release */ = {
+		1DC0F10C1F0001DD0077DA79 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -298,7 +322,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -309,7 +333,7 @@
 			};
 			name = Release;
 		};
-		1D2714941ED0A8A000D62539 /* Debug */ = {
+		1DC0F10E1F0001DD0077DA79 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
@@ -332,7 +356,7 @@
 			};
 			name = Debug;
 		};
-		1D2714951ED0A8A000D62539 /* Release */ = {
+		1DC0F10F1F0001DD0077DA79 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
@@ -358,25 +382,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D2714851ED0A8A000D62539 /* Build configuration list for PBXProject "CPAdManager" */ = {
+		1DC0F0FF1F0001DD0077DA79 /* Build configuration list for PBXProject "CPAdManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1D2714911ED0A8A000D62539 /* Debug */,
-				1D2714921ED0A8A000D62539 /* Release */,
+				1DC0F10B1F0001DD0077DA79 /* Debug */,
+				1DC0F10C1F0001DD0077DA79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1D2714931ED0A8A000D62539 /* Build configuration list for PBXNativeTarget "CPAdManager" */ = {
+		1DC0F10D1F0001DD0077DA79 /* Build configuration list for PBXNativeTarget "CPAdManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1D2714941ED0A8A000D62539 /* Debug */,
-				1D2714951ED0A8A000D62539 /* Release */,
+				1DC0F10E1F0001DD0077DA79 /* Debug */,
+				1DC0F10F1F0001DD0077DA79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 1D2714821ED0A8A000D62539 /* Project object */;
+	rootObject = 1DC0F0FC1F0001DD0077DA79 /* Project object */;
 }

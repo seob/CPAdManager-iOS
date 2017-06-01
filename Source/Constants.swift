@@ -7,5 +7,5 @@ import Foundation
 
 public enum AdError: Error {
     case testFailure
-    case notExistBannerView
+    case notExistAdView
 }

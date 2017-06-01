@@ -60,7 +60,7 @@ extension CPBannerAdManager: CPBannerAdDelegate {
             return
         }
         guard let bannerView = bannerAd.bannerView() else {
-            onFailedToLoad(bannerAd: bannerAd, error: AdError.notExistBannerView)
+            onFailedToLoad(bannerAd: bannerAd, error: AdError.notExistAdView)
             return
         }
         if failForDebug == true, arc4random_uniform(2) == 0 {

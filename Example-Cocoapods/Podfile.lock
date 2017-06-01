@@ -1,5 +1,5 @@
 PODS:
-  - CPAdManager (1.0.0)
+  - CPAdManager (1.3.0)
 
 DEPENDENCIES:
   - CPAdManager (from `../CPAdManager.podspec`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../CPAdManager.podspec"
 
 SPEC CHECKSUMS:
-  CPAdManager: d817392732c008b594f25f29bb38c3037089d0b4
+  CPAdManager: b0ad602a5d9303561dd94c3fedfcbc7d50707ab1
 
 PODFILE CHECKSUM: 0215f5aa14e4b49694c3314df0794048c3eb7329
 
