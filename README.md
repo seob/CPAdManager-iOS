@@ -40,25 +40,31 @@ Or, 1) Admob, 2) FBAudienceNetwork.
 ### Interstitial Ad
 
 ```swift
-class ViewController: UIViewController, CPInterstitialAdManagerDelegate {
+class ViewController: UIViewController {
     @IBOutlet fileprivate weak var showInterstitialButton: UIButton!
 
-    private let admob: CPInterstitialAd = CPAdmobInterstitialAd(unitId: "{unitId}")
-    private let facebook: CPInterstitialAd = CPFacebookInterstitialAd(placementId: "{placementId}")
-    private let interstitialAdManager: CPInterstitialAdManager
-
-    public required init?(coder aDecoder: NSCoder) {
-        interstitialAdManager = CPInterstitialAdManager(interstitialAds: [
-                admob,
-                facebook,
-        ], firstAd: CPUtil.isInstalledFacebook() ? facebook : admob)
-        
-        super.init(coder: aDecoder)
-    }
+    private var interstitialAdManager: CPInterstitialAdManager!
 
     override func viewDidLoad() {
 	    super.viewDidLoad()
-        interstitialAdManager.delegate = self
+
+interstitialAdManager = CPInterstitialAdManager(interstitialAds: [
+                CPAdmobInterstitialAd(unitId: "ca-app-pub-3940256099942544/1033173712"),
+                CPFacebookInterstitialAd(placementId: "1351290504887194_1726465200703054")
+        ], identifierForFirstAd: "facebook") { [weak self] manager, state in
+            switch state {
+            case .idle:
+                break
+            case .errorForOneCycle:
+                self?.showInterstitialButton?.isEnabled = false
+            case .loaded:
+                self?.showInterstitialButton?.isEnabled = true
+            case .willDismissed:
+                break
+            case .didDismissed:
+                break
+            }
+        }
         interstitialAdManager.failForDebug = true
         interstitialAdManager.requestAd()
     }
@@ -67,47 +73,38 @@ class ViewController: UIViewController, CPInterstitialAdManagerDelegate {
         interstitialAdManager.show(from: self)
         button?.isEnabled = false
     }
-
-    func onLoaded(interstitialAdManager: CPInterstitialAdManager) {
-        showInterstitialButton?.isEnabled = true
-    }
-
-    func onFailedToLoad(interstitialAdManager: CPInterstitialAdManager) {
-        showInterstitialButton?.isEnabled = false
-    }
-
-    func onDismissed(interstitialAd: CPInterstitialAdManager) {
-    }
 }
 ```
 
 ### Banner Ad
 
 ```swift
-class ViewController: UIViewController, CPBannerAdManagerDelegate {
+class ViewController: UIViewController {
     @IBOutlet fileprivate weak var requestBannerButton: UIButton!
     @IBOutlet fileprivate weak var bannerContainerView: UIView!
     @IBOutlet fileprivate weak var bannerContainerViewHeightConstraint: NSLayoutConstraint!
 
-    private let admobBanner = CPAdmobBannerAd(unitId: "{unitId}")
-    private let facebookBanner = CPFacebookBannerAd(placementId: "{placementId}")
-    private let bannerAdManager: CPBannerAdManager
-
-    public required init?(coder aDecoder: NSCoder) {
-        bannerAdManager = CPBannerAdManager(bannerAds: [
-                admobBanner,
-                facebookBanner
-        ], firstAd: CPUtil.isInstalledFacebook() ? facebookBanner: admobBanner)
-
-        super.init(coder: aDecoder)
-    }
+    private var bannerAdManager: CPBannerAdManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        bannerAdManager.containerView = bannerContainerView
-        bannerAdManager.rootViewController = self
-        bannerAdManager.containerViewHeightConstraint = bannerContainerViewHeightConstraint
-        bannerAdManager.delegate = self
+        bannerAdManager = CPBannerAdManager(bannerAds: [
+                CPAdmobBannerAd(unitId: "ca-app-pub-3940256099942544/6300978111"),
+                CPFacebookBannerAd(placementId: "1351290504887194_1351290761553835")
+        ], identifierForFirstAd: "facebook", viewController: self, containerView: bannerContainerView) { [weak self] manager, state in
+            guard let ss = self else { return }
+
+            switch state {
+            case .loaded(let height):
+                ss.bannerContainerViewHeightConstraint.constant = height
+                print("CPAdManager: \(ss.bannerContainerViewHeightConstraint.constant): \(height)")
+            case .errorForOneCycle:
+                break
+            case .idle:
+                break
+            }
+            ss.requestBannerButton.isEnabled = true
+        }
         bannerAdManager.failForDebug = true
     }
 
@@ -115,15 +112,45 @@ class ViewController: UIViewController, CPBannerAdManagerDelegate {
         button?.isEnabled = false
         bannerAdManager.request()
     }
+}
+```
 
-    func onFailedToLoad(bannerAdManager: CPBannerAdManager) {
-        requestBannerButton.isEnabled = true
+### Natvie Ad
+```swift
+class ViewController: UIViewController {
+    @IBOutlet fileprivate weak var requestNativeButton: UIButton!
+    @IBOutlet fileprivate weak var nativeContainerView: UIView!
+    @IBOutlet fileprivate weak var nativeContainerViewHeightConstraint: NSLayoutConstraint!
+
+    private var nativeAdManager: CPNativeAdManager!
+
+    override func viewDidLoad() {
+    super.viewDidLoad()
+    	super.viewDidLoad()
+        
+        nativeAdManager = CPNativeAdManager(nativeAds: [
+                CPAdmobNativeAd(unitId: "ca-app-pub-3940256099942544/4270592515"),
+                CPFacebookNativeAd(placementId: "1351290504887194_1773840312632209", adViewType: .genericHeight300)
+        ], identifierForFirstAD: "Admob", containerView: nativeContainerView) { [weak self] _, state in
+            switch state {
+            case .loaded(let height):
+                self?.nativeContainerViewHeightConstraint.constant = height
+            case .errorForOneCycle:
+                break
+            case .idle:
+                break
+            }
+
+            self?.requestNativeButton.isEnabled = true
+        }
+        nativeAdManager.rootViewController = self
+        nativeAdManager.failForDebug = true
     }
 
-    func onLoaded(bannerAdManager: CPBannerAdManager, height: CGFloat) {
-        requestBannerButton.isEnabled = true
+    @IBAction func showNativeAd(_ button: UIButton?) {
+        nativeAdManager.request()
+        button?.isEnabled = false
     }
-
 }
 ```
 
@@ -203,25 +230,31 @@ Facebook 이 설치되어 있으면 FBAudienceNetwork, Admob 순으로 요청합
 ### Interstitial Ad
 
 ```swift
-class ViewController: UIViewController, CPInterstitialAdManagerDelegate {
+class ViewController: UIViewController {
     @IBOutlet fileprivate weak var showInterstitialButton: UIButton!
 
-    private let admob: CPInterstitialAd = CPAdmobInterstitialAd(unitId: "{unitId}")
-    private let facebook: CPInterstitialAd = CPFacebookInterstitialAd(placementId: "{placementId}")
-    private let interstitialAdManager: CPInterstitialAdManager
-
-    public required init?(coder aDecoder: NSCoder) {
-        interstitialAdManager = CPInterstitialAdManager(interstitialAds: [
-                admob,
-                facebook,
-        ], firstAd: CPUtil.isInstalledFacebook() ? facebook : admob)
-        
-        super.init(coder: aDecoder)
-    }
+    private var interstitialAdManager: CPInterstitialAdManager!
 
     override func viewDidLoad() {
 	    super.viewDidLoad()
-        interstitialAdManager.delegate = self
+
+interstitialAdManager = CPInterstitialAdManager(interstitialAds: [
+                CPAdmobInterstitialAd(unitId: "ca-app-pub-3940256099942544/1033173712"),
+                CPFacebookInterstitialAd(placementId: "1351290504887194_1726465200703054")
+        ], identifierForFirstAd: "facebook") { [weak self] manager, state in
+            switch state {
+            case .idle:
+                break
+            case .errorForOneCycle:
+                self?.showInterstitialButton?.isEnabled = false
+            case .loaded:
+                self?.showInterstitialButton?.isEnabled = true
+            case .willDismissed:
+                break
+            case .didDismissed:
+                break
+            }
+        }
         interstitialAdManager.failForDebug = true
         interstitialAdManager.requestAd()
     }
@@ -230,47 +263,38 @@ class ViewController: UIViewController, CPInterstitialAdManagerDelegate {
         interstitialAdManager.show(from: self)
         button?.isEnabled = false
     }
-
-    func onLoaded(interstitialAdManager: CPInterstitialAdManager) {
-        showInterstitialButton?.isEnabled = true
-    }
-
-    func onFailedToLoad(interstitialAdManager: CPInterstitialAdManager) {
-        showInterstitialButton?.isEnabled = false
-    }
-
-    func onDismissed(interstitialAd: CPInterstitialAdManager) {
-    }
 }
 ```
 
 ### Banner Ad
 
 ```swift
-class ViewController: UIViewController, CPBannerAdManagerDelegate {
+class ViewController: UIViewController {
     @IBOutlet fileprivate weak var requestBannerButton: UIButton!
     @IBOutlet fileprivate weak var bannerContainerView: UIView!
     @IBOutlet fileprivate weak var bannerContainerViewHeightConstraint: NSLayoutConstraint!
 
-    private let admobBanner = CPAdmobBannerAd(unitId: "{unitId}")
-    private let facebookBanner = CPFacebookBannerAd(placementId: "{placementId}")
-    private let bannerAdManager: CPBannerAdManager
-
-    public required init?(coder aDecoder: NSCoder) {
-        bannerAdManager = CPBannerAdManager(bannerAds: [
-                admobBanner,
-                facebookBanner
-        ], firstAd: CPUtil.isInstalledFacebook() ? facebookBanner: admobBanner)
-
-        super.init(coder: aDecoder)
-    }
+    private var bannerAdManager: CPBannerAdManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        bannerAdManager.containerView = bannerContainerView
-        bannerAdManager.rootViewController = self
-        bannerAdManager.containerViewHeightConstraint = bannerContainerViewHeightConstraint
-        bannerAdManager.delegate = self
+        bannerAdManager = CPBannerAdManager(bannerAds: [
+                CPAdmobBannerAd(unitId: "ca-app-pub-3940256099942544/6300978111"),
+                CPFacebookBannerAd(placementId: "1351290504887194_1351290761553835")
+        ], identifierForFirstAd: "facebook", viewController: self, containerView: bannerContainerView) { [weak self] manager, state in
+            guard let ss = self else { return }
+
+            switch state {
+            case .loaded(let height):
+                ss.bannerContainerViewHeightConstraint.constant = height
+                print("CPAdManager: \(ss.bannerContainerViewHeightConstraint.constant): \(height)")
+            case .errorForOneCycle:
+                break
+            case .idle:
+                break
+            }
+            ss.requestBannerButton.isEnabled = true
+        }
         bannerAdManager.failForDebug = true
     }
 
@@ -278,15 +302,45 @@ class ViewController: UIViewController, CPBannerAdManagerDelegate {
         button?.isEnabled = false
         bannerAdManager.request()
     }
+}
+```
 
-    func onFailedToLoad(bannerAdManager: CPBannerAdManager) {
-        requestBannerButton.isEnabled = true
+### Natvie Ad
+```swift
+class ViewController: UIViewController {
+    @IBOutlet fileprivate weak var requestNativeButton: UIButton!
+    @IBOutlet fileprivate weak var nativeContainerView: UIView!
+    @IBOutlet fileprivate weak var nativeContainerViewHeightConstraint: NSLayoutConstraint!
+
+    private var nativeAdManager: CPNativeAdManager!
+
+    override func viewDidLoad() {
+    super.viewDidLoad()
+    	super.viewDidLoad()
+        
+        nativeAdManager = CPNativeAdManager(nativeAds: [
+                CPAdmobNativeAd(unitId: "ca-app-pub-3940256099942544/4270592515"),
+                CPFacebookNativeAd(placementId: "1351290504887194_1773840312632209", adViewType: .genericHeight300)
+        ], identifierForFirstAD: "Admob", containerView: nativeContainerView) { [weak self] _, state in
+            switch state {
+            case .loaded(let height):
+                self?.nativeContainerViewHeightConstraint.constant = height
+            case .errorForOneCycle:
+                break
+            case .idle:
+                break
+            }
+
+            self?.requestNativeButton.isEnabled = true
+        }
+        nativeAdManager.rootViewController = self
+        nativeAdManager.failForDebug = true
     }
 
-    func onLoaded(bannerAdManager: CPBannerAdManager, height: CGFloat) {
-        requestBannerButton.isEnabled = true
+    @IBAction func showNativeAd(_ button: UIButton?) {
+        nativeAdManager.request()
+        button?.isEnabled = false
     }
-
 }
 ```
 
