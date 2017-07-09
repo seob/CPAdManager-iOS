@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AdPlatformQueue<T: Equatable> {
+public struct AdPlatformQueue<T: AdIdentifier> {
     public var current: T {
         return queue[index]
     }
@@ -20,6 +20,13 @@ public struct AdPlatformQueue<T: Equatable> {
         assert(ads.count > 0)
 
         index = ads.index(where: { $0 == firstAd }) ?? 0
+        queue = ads
+    }
+
+    public init(ads: [T], identifierForFirstAd identifier: String) {
+        assert(ads.count > 0)
+
+        index = ads.index(where: { $0.identifier == identifier }) ?? 0
         queue = ads
     }
 

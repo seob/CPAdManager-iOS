@@ -7,23 +7,36 @@ import UIKit
 import GoogleMobileAds
 
 open class CPAdmobNativeAd: CPNativeAd {
-    var unitId: String
-    var delegate: CPNativeAdDelegate?
-    var adView: GADNativeExpressAdView?
+    public override var identifier: String {
+        return "Admob"
+    }
 
-    public init(unitId: String) {
+    fileprivate weak var delegate: CPNativeAdDelegate?
+
+    private var adView: GADNativeExpressAdView?
+    
+    private let unitId: String
+    private let adSize: GADAdSize
+
+    public init(unitId: String, adSize: GADAdSize = kGADAdSizeBanner) {
         self.unitId = unitId
+        self.adSize = adSize
     }
 
     public override func request(in viewController: UIViewController) {
         if adView == nil {
-            adView = GADNativeExpressAdView(adSize: kGADAdSizeLargeBanner)
+            adView = GADNativeExpressAdView(adSize: adSize)
             adView?.adUnitID = unitId
             adView?.rootViewController = viewController
             adView?.delegate = self
         }
 
+        let videoOptions = GADVideoOptions()
+        videoOptions.startMuted = true
+        adView?.setAdOptions([videoOptions])
+
         let request = GADRequest()
+        request.testDevices = [ kGADSimulatorID ]
         adView?.load(request)
     }
 

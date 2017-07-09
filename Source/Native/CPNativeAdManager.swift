@@ -5,7 +5,9 @@
 
 import UIKit
 
-open class CPNativeAd: NSObject {
+open class CPNativeAd: NSObject, AdIdentifier {
+    public var identifier: String { return "" }
+
     func request(in viewController: UIViewController) { }
     func set(delegate: CPNativeAdDelegate) { }
     func nativeView() -> UIView? { return nil }
@@ -16,27 +18,45 @@ public protocol CPNativeAdDelegate: class {
     func onFailedToLoad(nativeAd: CPNativeAd, error: Error)
 }
 
-public protocol CPNativeAdManagerDelegate: class {
-    func onFailedToLoad(nativeAdManager: CPNativeAdManager)
-    func onLoaded(nativeAdManager: CPNativeAdManager)
+public enum NativeADState {
+    case idle
+    case errorForOneCycle
+    case loaded(height: CGFloat)
 }
 
 open class CPNativeAdManager {
-    public weak var containerView: UIView?
     public weak var rootViewController: UIViewController?
-    public weak var delegate: CPNativeAdManagerDelegate?
-
-    fileprivate var adQueue: AdPlatformQueue<CPNativeAd>
-    fileprivate var errorController: ErrorController
 
     public var failForDebug = false
 
-    public init(nativeAds: [CPNativeAd], firstAd: CPNativeAd? = nil) {
-        adQueue = AdPlatformQueue(ads: nativeAds, firstAd: firstAd)
+    fileprivate weak var containerView: UIView?
+
+    fileprivate var adQueue: AdPlatformQueue<CPNativeAd>
+    fileprivate var errorController: ErrorController
+    fileprivate var state: NativeADState = .idle {
+        didSet {
+            print("CPAdManager: Native: state: \(state)")
+            changedStateBlock?(self, state)
+        }
+    }
+
+    private let changedStateBlock: ((CPNativeAdManager, NativeADState) -> Void)?
+
+    public init(nativeAds: [CPNativeAd], identifierForFirstAD: String, containerView: UIView, changedState: ((CPNativeAdManager, NativeADState) -> Void)? = nil) {
+        self.containerView = containerView
+        self.changedStateBlock = changedState
+
+        adQueue = AdPlatformQueue(ads: nativeAds, identifierForFirstAd: identifierForFirstAD)
+
         errorController = ErrorController(threshold: nativeAds.count)
-        errorController.onError = { [weak self] in
-            guard let ss = self else { return }
-            ss.delegate?.onFailedToLoad(nativeAdManager: ss)
+        errorController.onNext = { [weak self] in
+            self?.adQueue.next()
+            self?.request()
+        }
+        errorController.onErrorForOneCycle = { [weak self] in
+            self?.state = .errorForOneCycle
+            self?.adQueue.next()
+            self?.errorController.reset()
         }
 
         nativeAds.forEach { $0.set(delegate: self) }
@@ -50,6 +70,8 @@ open class CPNativeAdManager {
         guard let rootViewController = rootViewController else { return }
 
         adQueue.current.request(in: rootViewController)
+
+        print("CPAdManager: Native: \(adQueue.current.identifier): request")
     }
 }
 
@@ -67,21 +89,24 @@ extension CPNativeAdManager: CPNativeAdDelegate {
             return
         }
 
+        print("CPAdManager: Native: \(nativeAd.identifier): loaded")
+
         errorController.reset()
 
-        bannerView.frame = containerView.bounds
+        bannerView.removeFromSuperview()
+        bannerView.frame.size.width = containerView.bounds.size.width
 
         containerView.subviews.forEach { view in
             view.removeFromSuperview()
         }
         containerView.addSubview(bannerView)
 
-        delegate?.onLoaded(nativeAdManager: self)
+        state = .loaded(height: bannerView.bounds.size.height)
     }
 
     public func onFailedToLoad(nativeAd: CPNativeAd, error: Error) {
-        errorController.fail()
-        adQueue.next()
-        request()
+        print("CPAdManager: Native: \(nativeAd.identifier): failed")
+
+        errorController.reportError()
     }
 }

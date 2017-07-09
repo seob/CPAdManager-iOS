@@ -6,7 +6,8 @@
 import Foundation
 
 open class ErrorController {
-    public var onError: (()->Void)?
+    public var onErrorForOneCycle: (()->Void)?
+    public var onNext: (()->Void)?
 
     private var failureCount: Int = 0
 
@@ -20,11 +21,13 @@ open class ErrorController {
         failureCount = 0
     }
 
-    public func fail() {
+    public func reportError() {
         failureCount += 1
 
-        if failureCount == threshold {
-            onError?()
+        if failureCount >= threshold {
+            onErrorForOneCycle?()
+        } else {
+            onNext?()
         }
     }
 }

@@ -7,9 +7,14 @@ import Foundation
 import GoogleMobileAds
 
 open class CPAdmobBannerAd: CPBannerAd {
-    let unitId: String
-    var adView: GADBannerView?
-    var delegate: CPBannerAdDelegate?
+    public override var identifier: String {
+        return "Admob"
+    }
+
+    fileprivate var delegate: CPBannerAdDelegate?
+    
+    private let unitId: String
+    private var adView: GADBannerView?
 
     public init(unitId: String) {
         self.unitId = unitId

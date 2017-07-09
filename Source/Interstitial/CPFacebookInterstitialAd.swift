@@ -7,6 +7,10 @@ import Foundation
 import FBAudienceNetwork
 
 open class CPFacebookInterstitialAd: CPInterstitialAd {
+    public override var identifier: String {
+        return "Facebook"
+    }
+    
     fileprivate weak var delegate: CPInterstitialAdDelegate?
 
     private var interstitialAd: FBInterstitialAd?
@@ -15,8 +19,6 @@ open class CPFacebookInterstitialAd: CPInterstitialAd {
     public init(placementId: String) {
         self.placementId = placementId
         super.init()
-
-        FBAdSettings.setLogLevel(.warning)
     }
 
     public override func requestAd() {

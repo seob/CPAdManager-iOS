@@ -5,7 +5,9 @@
 
 import UIKit
 
-open class CPInterstitialAd: NSObject {
+open class CPInterstitialAd: NSObject, AdIdentifier {
+    public var identifier: String { return "" }
+    
     func requestAd() { }
     func ready() -> Bool { return false }
     func show(ad viewController: UIViewController) { }
@@ -19,38 +21,54 @@ public protocol CPInterstitialAdDelegate: class {
     func onDidDismissed(interstitialAd: CPInterstitialAd)
 }
 
-public protocol CPInterstitialAdManagerDelegate: class {
-    func onLoaded(interstitialAdManager: CPInterstitialAdManager)
-    func onFailedToLoad(interstitialAdManager: CPInterstitialAdManager)
-    func onWillDismissed(interstitialAdManager: CPInterstitialAdManager)
-    func onDidDismissed(interstitialAdManager: CPInterstitialAdManager)
+public enum InterstitialADState {
+    case idle
+    case errorForOneCycle
+    case loaded
+    case willDismissed
+    case didDismissed
 }
 
 open class CPInterstitialAdManager {
     public var failForDebug: Bool = true
     public var isAutoRefreshMode: Bool = true
 
-    public weak var delegate: CPInterstitialAdManagerDelegate?
-
     fileprivate var adQueue: AdPlatformQueue<CPInterstitialAd>
     fileprivate var errorController: ErrorController
+    fileprivate var state: InterstitialADState = .idle {
+        didSet {
+            print("CPAdManager: Interstitial: state: \(state)")
+            changedStateBlock?(self, state)
+        }
+    }
 
-    public init(interstitialAds: [CPInterstitialAd], firstAd: CPInterstitialAd? = nil) {
-        adQueue = AdPlatformQueue(ads: interstitialAds, firstAd: firstAd)
+    private let changedStateBlock: ((CPInterstitialAdManager, InterstitialADState) -> Void)?
+
+    public init(interstitialAds: [CPInterstitialAd], identifierForFirstAd: String, changedState: ((CPInterstitialAdManager, InterstitialADState) -> Void)? = nil) {
+        adQueue = AdPlatformQueue(ads: interstitialAds, identifierForFirstAd: identifierForFirstAd)
         errorController = ErrorController(threshold: interstitialAds.count)
+        changedStateBlock = changedState
 
         interstitialAds.forEach { [weak self] ad in
             guard let ss = self else { return }
             ad.set(delegate: ss)
         }
-        errorController.onError = { [weak self] in
-            guard let ss = self else { return }
-            ss.delegate?.onFailedToLoad(interstitialAdManager: ss)
+
+        errorController.onNext = { [weak self] in
+            self?.adQueue.next()
+            self?.requestAd()
+        }
+        errorController.onErrorForOneCycle = { [weak self] in
+            self?.state = .errorForOneCycle
+            self?.adQueue.next()
+            self?.errorController.reset()
         }
     }
 
     public func requestAd() {
         adQueue.current.requestAd()
+
+        print("CPAdManager: Interstitial: \(adQueue.current.identifier): request")
     }
 
     public func show(from viewController: UIViewController) {
@@ -69,23 +87,24 @@ extension CPInterstitialAdManager: CPInterstitialAdDelegate {
             return
         }
 
+        print("CPAdManager: Interstitial: \(interstitialAd.identifier): loaded")
+
         errorController.reset()
-        delegate?.onLoaded(interstitialAdManager: self)
+        state = .loaded
     }
 
     public func onFailedToLoad(interstitialAd: CPInterstitialAd, error: Error) {
-        errorController.fail()
+        print("CPAdManager: Interstitial: \(interstitialAd.identifier): failed")
 
-        adQueue.next()
-        requestAd()
+        errorController.reportError()
     }
 
     public func onWillDismissed(interstitialAd: CPInterstitialAd) {
-        delegate?.onWillDismissed(interstitialAdManager: self)
+        state = .willDismissed
     }
 
     public func onDidDismissed(interstitialAd: CPInterstitialAd) {
-        delegate?.onDidDismissed(interstitialAdManager: self)
+        state = .didDismissed
 
         if isAutoRefreshMode {
             requestAd()

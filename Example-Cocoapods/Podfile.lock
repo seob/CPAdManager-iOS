@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../CPAdManager.podspec"
 
 SPEC CHECKSUMS:
-  CPAdManager: b0ad602a5d9303561dd94c3fedfcbc7d50707ab1
+  CPAdManager: ae13ebd4a40fe8bb26e6836a9a8c77c95c7933e4
 
 PODFILE CHECKSUM: 0215f5aa14e4b49694c3314df0794048c3eb7329
 

@@ -8,15 +8,21 @@ import FBAudienceNetwork
 
 
 open class CPFacebookNativeAd: CPNativeAd {
+    public override var identifier: String {
+        return "Facebook"
+    }
+    
     fileprivate weak var delegate: CPNativeAdDelegate?
+    fileprivate weak var viewController: UIViewController?
 
     fileprivate var adView: FBNativeAdView?
-    fileprivate var viewController: UIViewController?
+    fileprivate var adViewType: FBNativeAdViewType
 
     private let placementId: String
 
-    public init(placementId: String) {
+    public init(placementId: String, adViewType: FBNativeAdViewType = .genericHeight100) {
         self.placementId = placementId
+        self.adViewType = adViewType
     }
 
     override func request(in viewController: UIViewController) {
@@ -39,8 +45,21 @@ open class CPFacebookNativeAd: CPNativeAd {
 extension CPFacebookNativeAd: FBNativeAdDelegate {
     public func nativeAdDidLoad(_ nativeAd: FBNativeAd) {
         guard let viewController = viewController else { return }
-        let adView = FBNativeAdView(nativeAd: nativeAd, with: .genericHeight100)
+        let adView = FBNativeAdView(nativeAd: nativeAd, with: adViewType)
         nativeAd.registerView(forInteraction: adView, with: viewController)
+
+        adView.frame.size.height = {
+            switch adViewType {
+            case .genericHeight100:
+                return 100
+            case .genericHeight120:
+                return 120
+            case .genericHeight300:
+                return 300
+            case .genericHeight400:
+                return 400
+            }
+        }()
 
         self.adView = adView
         delegate?.onLoaded(nativeAd: self)

@@ -5,7 +5,13 @@
 
 import UIKit
 
-open class CPBannerAd: NSObject {
+public protocol AdIdentifier: Equatable {
+    var identifier: String { get }
+}
+
+open class CPBannerAd: NSObject, AdIdentifier {
+    public var identifier: String { return "" }
+    
     func request(in viewController: UIViewController) { }
     func set(delegate: CPBannerAdDelegate) { }
     func bannerView() -> UIView? { return nil }
@@ -16,41 +22,56 @@ public protocol CPBannerAdDelegate: class {
     func onFailedToLoad(bannerAd: CPBannerAd, error: Error)
 }
 
-public protocol CPBannerAdManagerDelegate: class {
-    func onFailedToLoad(bannerAdManager: CPBannerAdManager)
-    func onLoaded(bannerAdManager: CPBannerAdManager, height: CGFloat)
+public enum BannerADState {
+    case idle
+    case errorForOneCycle
+    case loaded(height: CGFloat)
 }
 
 open class CPBannerAdManager {
-    public weak var containerView: UIView?
-    public weak var rootViewController: UIViewController?
-    public weak var containerViewHeightConstraint: NSLayoutConstraint?
-    public weak var delegate: CPBannerAdManagerDelegate?
-
-    fileprivate var adQueue: AdPlatformQueue<CPBannerAd>
-    fileprivate var errorController: ErrorController
-
     public var failForDebug = false
 
-    public init(bannerAds: [CPBannerAd], firstAd: CPBannerAd? = nil) {
-        adQueue = AdPlatformQueue(ads: bannerAds, firstAd: firstAd)
+    fileprivate weak var containerView: UIView!
+    
+    fileprivate var adQueue: AdPlatformQueue<CPBannerAd>
+    fileprivate var errorController: ErrorController
+    fileprivate var state: BannerADState = .idle {
+        didSet {
+            print("CPAdManager: Banner: state: \(state)")
+            changedStateBlock?(self, state)
+        }
+    }
+
+    fileprivate let changedStateBlock: ((CPBannerAdManager, BannerADState) -> Void)?
+
+    private weak var viewController: UIViewController!
+
+    public init(bannerAds: [CPBannerAd], identifierForFirstAd: String, viewController: UIViewController, containerView: UIView, changedState: ((CPBannerAdManager, BannerADState) -> Void)? = nil) {
+        self.viewController = viewController
+        self.containerView = containerView
+        self.changedStateBlock = changedState
+        adQueue = AdPlatformQueue(ads: bannerAds, identifierForFirstAd: identifierForFirstAd)
+
         errorController = ErrorController(threshold: bannerAds.count)
-        errorController.onError = { [weak self] in
-            guard let ss = self else { return }
-            ss.delegate?.onFailedToLoad(bannerAdManager: ss)
+        errorController.onNext = { [weak self] in
+            self?.adQueue.next()
+            self?.request()
+        }
+        errorController.onErrorForOneCycle = { [weak self] in
+            self?.state = .errorForOneCycle
+            self?.adQueue.next()
+            self?.errorController.reset()
         }
         
         bannerAds.forEach { $0.set(delegate: self) }
     }
 
     public func request() {
-        assert(rootViewController != nil)
         assert(containerView != nil)
+        assert(viewController != nil)
 
-        guard containerView != nil else { return }
-        guard let rootViewController = rootViewController else { return }
-
-        adQueue.current.request(in: rootViewController)
+        adQueue.current.request(in: viewController)
+        print("CPAdManager: Banner: \(adQueue.current.identifier): request")
     }
 }
 
@@ -67,6 +88,8 @@ extension CPBannerAdManager: CPBannerAdDelegate {
             onFailedToLoad(bannerAd: bannerAd, error: AdError.testFailure)
             return
         }
+        
+        print("CPAdManager: Banner: \(bannerAd.identifier): loaded")
 
         errorController.reset()
 
@@ -76,13 +99,12 @@ extension CPBannerAdManager: CPBannerAdDelegate {
         containerView.addSubview(bannerView)
 
         let height: CGFloat = CPUtil.resize(bannerView.frame.size, fitWidth: containerView.frame.size.width).height
-        containerViewHeightConstraint?.constant = height
-        delegate?.onLoaded(bannerAdManager: self, height: height)
+        state = .loaded(height: height)
     }
 
     public func onFailedToLoad(bannerAd: CPBannerAd, error: Error) {
-        errorController.fail()
-        adQueue.next()
-        request()
+        print("CPAdManager: Banner: \(bannerAd.identifier): failed")
+
+        errorController.reportError()
     }
 }

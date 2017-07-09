@@ -7,6 +7,10 @@ import Foundation
 import GoogleMobileAds
 
 open class CPAdmobInterstitialAd: CPInterstitialAd {
+    public override var identifier: String {
+        return "Admob"
+    }
+
     fileprivate weak var delegate: CPInterstitialAdDelegate?
 
     private var interstitial: GADInterstitial?

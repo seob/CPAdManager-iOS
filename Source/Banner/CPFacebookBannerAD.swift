@@ -7,6 +7,10 @@ import Foundation
 import FBAudienceNetwork
 
 open class CPFacebookBannerAd: CPBannerAd {
+    public override var identifier: String {
+        return "Facebook"
+    }
+
     fileprivate weak var delegate: CPBannerAdDelegate?
 
     private var adView: FBAdView?
