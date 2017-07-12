@@ -30,6 +30,7 @@ public enum BannerADState {
 
 open class CPBannerAdManager {
     public var failForDebug = false
+    public var changedStateBlock: ((CPBannerAdManager, BannerADState) -> Void)?
 
     fileprivate weak var containerView: UIView!
     
@@ -41,8 +42,6 @@ open class CPBannerAdManager {
             changedStateBlock?(self, state)
         }
     }
-
-    fileprivate let changedStateBlock: ((CPBannerAdManager, BannerADState) -> Void)?
 
     private weak var viewController: UIViewController!
 

@@ -31,7 +31,8 @@ public enum InterstitialADState {
 
 open class CPInterstitialAdManager {
     public var failForDebug: Bool = true
-    public var isAutoRefreshMode: Bool = true
+    public var isAutoRefreshMode: Bool = false
+    public var changedStateBlock: ((CPInterstitialAdManager, InterstitialADState) -> Void)?
 
     fileprivate var adQueue: AdPlatformQueue<CPInterstitialAd>
     fileprivate var errorController: ErrorController
@@ -41,8 +42,6 @@ open class CPInterstitialAdManager {
             changedStateBlock?(self, state)
         }
     }
-
-    private let changedStateBlock: ((CPInterstitialAdManager, InterstitialADState) -> Void)?
 
     public init(interstitialAds: [CPInterstitialAd], identifierForFirstAd: String, changedState: ((CPInterstitialAdManager, InterstitialADState) -> Void)? = nil) {
         adQueue = AdPlatformQueue(ads: interstitialAds, identifierForFirstAd: identifierForFirstAd)

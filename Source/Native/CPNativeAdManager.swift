@@ -28,6 +28,7 @@ open class CPNativeAdManager {
     public weak var rootViewController: UIViewController?
 
     public var failForDebug = false
+    public var changedStateBlock: ((CPNativeAdManager, NativeADState) -> Void)?
 
     fileprivate weak var containerView: UIView?
 
@@ -39,8 +40,6 @@ open class CPNativeAdManager {
             changedStateBlock?(self, state)
         }
     }
-
-    private let changedStateBlock: ((CPNativeAdManager, NativeADState) -> Void)?
 
     public init(nativeAds: [CPNativeAd], identifierForFirstAD: String, containerView: UIView, changedState: ((CPNativeAdManager, NativeADState) -> Void)? = nil) {
         self.containerView = containerView
