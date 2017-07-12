@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D4E71261F166F9B009359F5 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4E71251F166F9B009359F5 /* FBAudienceNetwork.framework */; };
+		1D4E71281F166FA4009359F5 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4E71271F166FA4009359F5 /* GoogleMobileAds.framework */; };
 		1DC0F1131F00021F0077DA79 /* CPAdManager.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 1DC0F1101F00021F0077DA79 /* CPAdManager.podspec */; };
-		1DC0F1181F00027F0077DA79 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC0F1161F00027F0077DA79 /* GoogleMobileAds.framework */; };
-		1DC0F1191F00027F0077DA79 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC0F1171F00027F0077DA79 /* FBAudienceNetwork.framework */; };
 		3E11B049B42D5B02F4FEABEF /* CPAdmobNativeAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BAE54F68E0917C6DA531 /* CPAdmobNativeAd.swift */; };
 		3E11B1F63F23B75C12ECAD20 /* CPNativeAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11BA4734FCAE2C3C458AD9 /* CPNativeAdManager.swift */; };
 		3E11B4295F74C1B1FD8F643F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E11BADADEA912081EC2FE0E /* Info.plist */; };
@@ -27,10 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D4E71251F166F9B009359F5 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBAudienceNetwork.framework; path = FBAudience_4.24.0/FBAudienceNetwork.framework; sourceTree = "<group>"; };
+		1D4E71271F166FA4009359F5 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = GoogleMobileAds_7.21.0/GoogleMobileAds.framework; sourceTree = "<group>"; };
 		1DC0F1051F0001DD0077DA79 /* CPAdManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CPAdManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DC0F1101F00021F0077DA79 /* CPAdManager.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CPAdManager.podspec; sourceTree = "<group>"; };
-		1DC0F1161F00027F0077DA79 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
-		1DC0F1171F00027F0077DA79 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		3E11B181BDD962607547095A /* CPAdmobInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPAdmobInterstitialAd.swift; sourceTree = "<group>"; };
 		3E11B26422E64D5DA09FA24B /* CPAdmobBannerAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPAdmobBannerAd.swift; sourceTree = "<group>"; };
 		3E11B2EF39AC51E4216803FD /* CPFacebookInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPFacebookInterstitialAd.swift; sourceTree = "<group>"; };
@@ -52,8 +52,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DC0F1181F00027F0077DA79 /* GoogleMobileAds.framework in Frameworks */,
-				1DC0F1191F00027F0077DA79 /* FBAudienceNetwork.framework in Frameworks */,
+				1D4E71281F166FA4009359F5 /* GoogleMobileAds.framework in Frameworks */,
+				1D4E71261F166F9B009359F5 /* FBAudienceNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,8 +81,8 @@
 		3E11B26565B832E6D9577560 /* AdPlatforms */ = {
 			isa = PBXGroup;
 			children = (
-				1DC0F1161F00027F0077DA79 /* GoogleMobileAds.framework */,
-				1DC0F1171F00027F0077DA79 /* FBAudienceNetwork.framework */,
+				1D4E71271F166FA4009359F5 /* GoogleMobileAds.framework */,
+				1D4E71251F166F9B009359F5 /* FBAudienceNetwork.framework */,
 			);
 			path = AdPlatforms;
 			sourceTree = "<group>";
@@ -345,6 +345,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AdPlatforms",
+					"$(PROJECT_DIR)/AdPlatforms/FBAudience_4.24.0",
+					"$(PROJECT_DIR)/AdPlatforms/GoogleMobileAds_7.21.0",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -368,6 +370,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AdPlatforms",
+					"$(PROJECT_DIR)/AdPlatforms/FBAudience_4.24.0",
+					"$(PROJECT_DIR)/AdPlatforms/GoogleMobileAds_7.21.0",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
