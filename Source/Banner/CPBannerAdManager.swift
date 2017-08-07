@@ -66,8 +66,7 @@ open class CPBannerAdManager {
     }
 
     public func request() {
-        assert(containerView != nil)
-        assert(viewController != nil)
+        guard let viewController = viewController else { return }
 
         adQueue.current.request(in: viewController)
         print("CPAdManager: Banner: \(adQueue.current.identifier): request")

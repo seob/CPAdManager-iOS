@@ -62,9 +62,6 @@ open class CPNativeAdManager {
     }
 
     public func request() {
-        assert(rootViewController != nil)
-        assert(containerView != nil)
-
         guard containerView != nil else { return }
         guard let rootViewController = rootViewController else { return }
 
