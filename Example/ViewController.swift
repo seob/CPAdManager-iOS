@@ -69,6 +69,7 @@ class ViewController: UIViewController {
             ss.requestBannerButton.isEnabled = true
         }
         bannerAdManager.failForDebug = true
+        bannerAdManager.request()
 
         nativeAdManager = CPNativeAdManager(nativeAds: [
                 CPAdmobNativeAd(unitId: "ca-app-pub-3940256099942544/4270592515"),

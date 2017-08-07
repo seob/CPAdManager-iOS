@@ -72,14 +72,24 @@ open class CPBannerAdManager {
         adQueue.current.request(in: viewController)
         print("CPAdManager: Banner: \(adQueue.current.identifier): request")
     }
+
+    public func showIfNeeded() {
+        guard let containerView = containerView else { return }
+        guard let bannerView = adQueue.current.bannerView() else { return }
+
+        containerView.subviews.forEach { view in
+            view.removeFromSuperview()
+        }
+        containerView.addSubview(bannerView)
+
+        let height: CGFloat = CPUtil.resize(bannerView.frame.size, fitWidth: containerView.frame.size.width).height
+        state = .loaded(height: height)
+    }
 }
 
 extension CPBannerAdManager: CPBannerAdDelegate {
     public func onLoaded(bannerAd: CPBannerAd) {
-        guard let containerView = containerView else {
-            return
-        }
-        guard let bannerView = bannerAd.bannerView() else {
+        guard let _ = bannerAd.bannerView() else {
             onFailedToLoad(bannerAd: bannerAd, error: AdError.notExistAdView)
             return
         }
@@ -92,13 +102,7 @@ extension CPBannerAdManager: CPBannerAdDelegate {
 
         errorController.reset()
 
-        containerView.subviews.forEach { view in
-            view.removeFromSuperview()
-        }
-        containerView.addSubview(bannerView)
-
-        let height: CGFloat = CPUtil.resize(bannerView.frame.size, fitWidth: containerView.frame.size.width).height
-        state = .loaded(height: height)
+        showIfNeeded()
     }
 
     public func onFailedToLoad(bannerAd: CPBannerAd, error: Error) {

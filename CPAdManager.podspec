@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "CPAdManager"
-  s.version      = "1.4.1"
+  s.version      = "1.4.2"
   s.summary      = "Mobile AD Mediation"
   s.description  = <<-DESC
   복수개의 모바일 광고를 사용하여 수익을 올릴려고 할때 도움이 되는 라이브러리
