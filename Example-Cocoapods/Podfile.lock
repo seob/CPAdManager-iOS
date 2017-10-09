@@ -1,16 +1,19 @@
 PODS:
-  - CPAdManager (1.3.0)
+  - CPAdManager (1.4.3):
+    - KVOController
+  - KVOController (1.2.0)
 
 DEPENDENCIES:
   - CPAdManager (from `../CPAdManager.podspec`)
 
 EXTERNAL SOURCES:
   CPAdManager:
-    :path: "../CPAdManager.podspec"
+    :path: ../CPAdManager.podspec
 
 SPEC CHECKSUMS:
-  CPAdManager: ae13ebd4a40fe8bb26e6836a9a8c77c95c7933e4
+  CPAdManager: e1f7d0a239b06c2d10bbfe0bc9858a93450bbfc6
+  KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
 
-PODFILE CHECKSUM: 0215f5aa14e4b49694c3314df0794048c3eb7329
+PODFILE CHECKSUM: 80a9db8f06403beec2fd8168bb55a7595b239fad
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.4.0.beta.1
